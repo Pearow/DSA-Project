@@ -1,0 +1,15 @@
+Index: out/production/DST-Project/README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># DST-Project\r\nherkesin branchi var\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/out/production/DST-Project/README.md b/out/production/DST-Project/README.md
+--- a/out/production/DST-Project/README.md	(revision b3cdd16330560cb340f97388476ad6ac15494926)
++++ b/out/production/DST-Project/README.md	(date 1714483133353)
+@@ -1,2 +1,3 @@
+ # DST-Project
+ herkesin branchi var
++bir hatayi geri almayi deniyorum
+\ No newline at end of file

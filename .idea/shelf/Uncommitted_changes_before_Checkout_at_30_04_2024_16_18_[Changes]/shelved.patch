@@ -1,0 +1,14 @@
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># DST-Project
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/README.md b/README.md
+--- a/README.md	(revision b79e842b5cf7b477ac2104a7e3a4d2911461eb10)
++++ b/README.md	(date 1714483092101)
+@@ -1,1 +1,1 @@
+-# DST-Project
+\ No newline at end of file
++# DST-Project
