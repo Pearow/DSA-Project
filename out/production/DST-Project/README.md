@@ -1,2 +1,2 @@
 # DST-Project
-oopsieler geri alindi
+herkesin branchi var
