@@ -1,4 +1,4 @@
-package structures.tree;
+package src.structures;
 
 public class bst_deneme {
     public static void main(String[] args) {
