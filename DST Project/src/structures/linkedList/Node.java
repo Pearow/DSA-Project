@@ -2,23 +2,21 @@ package src.structures.linkedList;
 
 import src.Student;
 public class Node<T> {
-    T Student data;
+    private T data;
 
     private double gpa;
-    private Student data;
     private Node<T> next;
 
-    public Node(Student data) {
+    public Node(T data) {
         this.data = data;
-        this.gpa = data.getGpa;
         this.next = null;
     }
 
-    public Student getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Student data) {
+    public void setData(T data) {
         this.data = data;
     }
 
@@ -30,11 +28,11 @@ public class Node<T> {
         this.gpa = gpa;
     }
 
-    public src.structures.linkedList.Node getNext() {
+    public Node getNext() {
         return next;
     }
 
-    public void setNext(src.structures.linkedList.Node next) {
+    public void setNext(Node<T> next) {
         this.next = next;
     }
 }

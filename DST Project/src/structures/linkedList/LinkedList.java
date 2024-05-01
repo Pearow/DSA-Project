@@ -1,53 +1,53 @@
 package src.structures.linkedList;
 
-public class LinkedList <T>{
-   private Node<T> root;
+
+public class LinkedList {
+   private Node root;
    private int lenght;
-   private Node<T> head;
 
    public LinkedList() {
-      this.head = null;
+      this.root = null;
    }
-   public void add(T data) {
+   public <T> void add(T data) {
       Node<T> newNode = new Node<>(data);
-      if (head == null) {
-         head = newNode;
+      if (root == null) {
+         root = newNode;
       } else {
-         Node<T> current = head;
-         while (current.next != null) {
-            current = current.next;
+         Node current = root;
+         while (current.getNext() != null) {
+            current = current.getNext();
          }
-         current.next = newNode;
+         current.setNext(newNode);
       }
       lenght++;
    }
 
 
-
-    public void remove(T data) {
-      if (head == null) {
-         return;
-      }
-      if (head.data.equals(data)) {
-         head = head.next;
-         lenght--;
-         return;
-      }
-      Node<T> current = head;
-      while (current.next != null) {
-         if (current.next.data.equals(data)) {
-            current.next = current.next.next;
-            lenght--;
-            return;
-         }
-         current = current.next;
-      }
+    //TODO: Will be Fixed Later
+    public <T> void remove(T data) {
+//      if (head == null) {
+//         return;
+//      }
+//      if (head.getData().equals(data)) {
+//         head = head.getNext();
+//         lenght--;
+//         return;
+//      }
+//      Node<T> current = head;
+//      while (current.getNext() != null) {
+//         if (current.getNext().getData().equals(data)) {
+//            current.getNext() = current.getNext().getNext();
+//            lenght--;
+//            return;
+//         }
+//         current = current.getNext();
+//      }
    }
     public int getLenght() {
         return lenght;
     }
 
-    public Node<T> getRoot() {
+    public Node getRoot() {
         return root;
     }
 }
