@@ -1,11 +1,12 @@
 package src.structures.linkedList;
 
 import src.Student;
-public class Node {
+public class Node<T> {
+    T Student data;
 
     private double gpa;
     private Student data;
-    private Node next;
+    private Node<T> next;
 
     public Node(Student data) {
         this.data = data;
