@@ -1,4 +1,4 @@
-package src.structures;
+package src.structures.tree;
 
 public class Node {
     int key;

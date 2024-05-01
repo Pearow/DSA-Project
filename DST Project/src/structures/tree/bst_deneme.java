@@ -1,8 +1,8 @@
-package src.structures;
+package src.structures.tree;
 
 public class bst_deneme {
     public static void main(String[] args) {
-        BinarySearchTree tree = new BinarySearchTree();
+        Tree tree = new Tree();
         tree.insert(50);
         tree.insert(30);
         tree.insert(20);

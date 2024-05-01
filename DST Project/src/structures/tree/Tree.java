@@ -1,8 +1,8 @@
-package src.structures;
+package src.structures.tree;
 
-public class BinarySearchTree {
+public class Tree {
     Node root;
-    BinarySearchTree() {
+    Tree() {
         root = null;
     }
 
