@@ -126,5 +126,9 @@ public class Student implements Comparable<Student> {
         System.out.println(student2.getDepartment());
         System.out.println(student2.getNationality());
 
+        student2.setId(3);
+
+        System.out.println(student2.getId());
+
     }
 }
