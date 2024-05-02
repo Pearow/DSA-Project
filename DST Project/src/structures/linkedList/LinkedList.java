@@ -22,6 +22,13 @@ public class LinkedList {
       lenght++;
    }
 
+   public <T> T get(int index, Class<T> Tclass){
+       return (T) new Object();
+   }
+
+   public <T> boolean edit(int index, T data){
+       return false;
+   }
 
     //TODO: Will be Fixed Later
     public <T> void remove(T data) {
