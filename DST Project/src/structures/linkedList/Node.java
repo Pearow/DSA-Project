@@ -6,6 +6,7 @@ public class Node<T> {
 
     private double gpa;
     private Node<T> next;
+    private Node<T> prev;
 
     public Node(T data) {
         this.data = data;
@@ -33,6 +34,14 @@ public class Node<T> {
     }
 
     public void setNext(Node<T> next) {
+        this.next = next;
+    }
+
+    public Node getPrev() {
+        return next;
+    }
+
+    public void setPrev(Node<T> next) {
         this.next = next;
     }
 }
