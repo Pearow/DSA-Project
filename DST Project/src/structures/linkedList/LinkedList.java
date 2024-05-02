@@ -32,15 +32,15 @@ public class LinkedList {
         }
         Node current = root;
         for (int i = 0; i < index; i++) {
-            if (current.next == null) {
+            if (current.getNext() == null) {
                 throw new NoSuchElementException();
             }
-            current = current.next;
+            current = current.getNext();
         }
         return Tclass.cast(current.getData());
     }
     
-
+    
     //TODO: Find the node with specified index and change its data to variable "data". Return true if completed succesfully else rtrn fls
 
     //TODO: Will be Fixed Later
