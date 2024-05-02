@@ -24,6 +24,7 @@ public class LinkedList {
       lenght++;
    }
 
+
    //İstersen
    //TODO: Get items from nodes according to their index
     public <T> T get(int index, Class<T> Tclass) throws NoSuchElementException {
