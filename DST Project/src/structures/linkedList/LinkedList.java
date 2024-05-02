@@ -22,6 +22,24 @@ public class LinkedList {
       lenght++;
    }
 
+   //İstersen
+   //TODO: Get items from nodes according to their index
+    public <T> T get(int index, Class<T> Tclass){
+        if (index < 0 || head == null) {
+            throw new NoSuchElementException();
+        }
+        Node current = head;
+        for (int i = 0; i < index; i++) {
+            if (current.next == null) {
+                throw new NoSuchElementException();
+            }
+            current = current.next;
+        }
+        return Tclass.cast(current.data);
+    }
+    
+
+    //TODO: Find the node with specified index and change its data to variable "data". Return true if completed succesfully else rtrn fls
 
     //TODO: Will be Fixed Later
     public <T> void remove(T data) {
