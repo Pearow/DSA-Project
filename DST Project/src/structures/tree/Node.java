@@ -3,12 +3,12 @@ package src.structures.tree;
 import src.Student;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Node implements Serializable, Comparable<Node> {
     private Student data;
     private Node left;
     private Node right;
-    private int balance;
     private Node parent;
 
     public Node(Node parent, Student data) {
@@ -57,18 +57,29 @@ public class Node implements Serializable, Comparable<Node> {
         this.parent = parent;
     }
 
-    public int getBalance() {
-        return balance;
+    public int getHeight() {
+        if(right == null && left == null)
+            return 0;
+        else if (right != null && left != null)
+            return Math.max(right.getHeight(), left.getHeight()) + 1;
+        else return Objects.requireNonNullElseGet(right, () -> left).getHeight() + 1; // Automatically recommended by IntelliJ
     }
 
-    public void increaseBalance() {
-        balance++;
+    public void rightRotate() {
+        Node newRoot = left;
+        left = newRoot.getRight();
+        newRoot.setRight(this);
+        newRoot.setParent(parent);
+        parent = newRoot;
     }
 
-    public void decreaseBalance() {
-        balance--;
+    public void leftRotate() {
+        Node newRoot = right;
+        right = newRoot.getLeft();
+        newRoot.setLeft(this);
+        newRoot.setParent(parent);
+        parent = newRoot;
     }
-
     @Override
     public int compareTo(Node o) {
         return 0;

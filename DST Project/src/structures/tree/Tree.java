@@ -4,6 +4,7 @@ import src.Student;
 
 import java.io.Serializable;
 
+//TODO: Change recursive to loop
 public class Tree implements Serializable {
     private Node root;
 
@@ -18,12 +19,23 @@ public class Tree implements Serializable {
             return newNode;
         }
         if(pointer.compareTo(newNode) >= 0){
-            pointer.increaseBalance();
             pointer.setRight(add(pointer.getRight(), pointer, newNode));
         }
-        else if(pointer.compareTo(newNode) < 0){
-            pointer.decreaseBalance();
+        else if(pointer.compareTo(newNode) < 0) {
             pointer.setLeft(add(pointer.getLeft(), pointer, newNode));
+        }
+        int balance =  (pointer.getLeft() != null ? pointer.getLeft().getHeight(): 0) - (pointer.getRight() != null ? pointer.getRight().getHeight(): 0);
+        if(balance > 1 && pointer.getLeft().compareTo(newNode) > 0)
+            pointer.rightRotate();
+        else if(balance < -1 && pointer.getRight().compareTo(newNode) < 0)
+            pointer.rightRotate();
+        else if(balance > 1 && pointer.getLeft().compareTo(newNode) < 0){
+            pointer.setLeft(pointer.getLeft().leftRotate());
+            pointer.rightRotate();
+        }
+        else if(balance < -1 && pointer.getRight().compareTo(newNode) > 0){
+            pointer.setRight(pointer.getRight().rightRotate());
+            pointer.leftRotate();
         }
         return pointer;
     }
@@ -43,7 +55,7 @@ public class Tree implements Serializable {
                     node.getParent().setRight(null);
             } else
                 root = null;
-            return true;
+
         } else if (node.getLeft() != null && node.getRight() != null) {
                 Node min = node;
                 while (min.getLeft() != null)
@@ -51,7 +63,7 @@ public class Tree implements Serializable {
                 node.setData(min.getData());
                 if (!remove(min))
                     throw new Exception("Child node not found");
-                return true;
+
 
         } else {
             Node child = node.getLeft() != null ? node.getLeft() : node.getRight();
@@ -60,12 +72,13 @@ public class Tree implements Serializable {
                     node.getParent().setLeft(child);
                 else
                     node.getParent().setRight(child);
-                return true;
+
             }else {
                 root = child;
-                return true;
+
             }
         }
+        return true;
     }
 
     public Student find(int id){
