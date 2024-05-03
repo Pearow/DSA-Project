@@ -5,32 +5,34 @@ import src.Student;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Node implements Serializable, Comparable<Node> {
-    private Student data;
+public class Node <T extends Integer> implements Serializable, Comparable<Node> {
+    private T data;
     private Node left;
     private Node right;
     private Node parent;
+    private int height;
 
-    public Node(Node parent, Student data) {
+    public Node(Node parent, T data) {
         this.data = data;
         this.parent = parent;
         this.left = null;
         this.right = null;
     }
 
-    public Node(Student data) {
+    public Node(T data) {
         this.data = data;
         this.parent = null;
         this.left = null;
         this.right = null;
     }
 
-    public Student getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Student data) {
+    public void setData(T data) {
         this.data = data;
+        // this.id = data.getId();
     }
 
     public Node getLeft() {
@@ -58,30 +60,27 @@ public class Node implements Serializable, Comparable<Node> {
     }
 
     public int getHeight() {
-        if(right == null && left == null)
-            return 0;
-        else if (right != null && left != null)
-            return Math.max(right.getHeight(), left.getHeight()) + 1;
-        else return Objects.requireNonNullElseGet(right, () -> left).getHeight() + 1; // Automatically recommended by IntelliJ
+        return height;
     }
 
-    public void rightRotate() {
-        Node newRoot = left;
-        left = newRoot.getRight();
-        newRoot.setRight(this);
-        newRoot.setParent(parent);
-        parent = newRoot;
+    public void setHeight(int height) {
+        this.height = height;
     }
 
-    public void leftRotate() {
-        Node newRoot = right;
-        right = newRoot.getLeft();
-        newRoot.setLeft(this);
-        newRoot.setParent(parent);
-        parent = newRoot;
+    public StringBuilder inOrder(int no) {
+        StringBuilder sb = new StringBuilder();
+        if (left != null) {
+            sb.append(left.inOrder(no + 1));
+        }
+        sb.append(data.toString()).append("\n");
+        if (right != null) {
+            sb.append(right.inOrder(no + 1));
+        }
+        return sb;
     }
+
     @Override
     public int compareTo(Node o) {
-        return 0;
+        return data.compareTo(o.getData());//TODO
     }
 }
