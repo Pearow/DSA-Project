@@ -6,18 +6,18 @@ import java.io.Serializable;
 import java.util.Random;
 
 //TODO: Change recursive to loop
-public class Tree <T extends Integer> implements Serializable {
-    private Node<T> root;
+public class Tree implements Serializable {
+    private Node root;
 
-    public void add(T data) {
-        Node<T> newNode = new Node<>(data);
+    public void add(Student data) {
+        Node newNode = new Node(data);
         if(root != null)
             add(root, null, newNode);
         else
             root = newNode;
     }
 
-    private Node<T> add(Node<T> pointer, Node<T> parent, Node<T> newNode){
+    private Node add(Node pointer, Node parent, Node newNode){
         if(pointer == null) {
             newNode.setParent(parent);
             return newNode;
@@ -45,19 +45,21 @@ public class Tree <T extends Integer> implements Serializable {
         return pointer;
     }
 
-    public int getHeight(Node<T> node){
+    public int getHeight(Node node){
         if (node == null)
             return 0;
         return node.getHeight();
     }
 
-    Node<T> rightRotate(Node<T> y) {
-        Node<T> x = y.getLeft();
-        Node<T> T2 = x.getRight();
+    Node rightRotate(Node y) {
+        Node x = y.getLeft();
+        Node T2 = x.getRight();
 
         // Perform rotation
         x.setRight(y);
+        y.setParent(x);
         y.setLeft(T2);
+        T2.setParent(y);
 
         x.setHeight(Math.max(getHeight(x.getLeft()), getHeight(x.getRight())) + 1);
         y.setHeight(Math.max(getHeight(y.getLeft()), getHeight(y.getRight())) + 1);
@@ -68,13 +70,15 @@ public class Tree <T extends Integer> implements Serializable {
 
     // A utility function to left rotate subtree rooted with x
     // See the diagram given above.
-    Node<T> leftRotate(Node<T> x) {
-        Node<T> y = x.getRight();
-        Node<T> T2 = y.getLeft();
+    Node leftRotate(Node x) {
+        Node y = x.getRight();
+        Node T2 = y.getLeft();
 
         // Perform rotation
         y.setLeft(x);
+        x.setParent(y);
         x.setRight(T2);
+        T2.setParent(x);
 
         x.setHeight(Math.max(getHeight(x.getLeft()), getHeight(x.getRight())) + 1);
         y.setHeight(Math.max(getHeight(y.getLeft()), getHeight(y.getRight())) + 1);
@@ -83,7 +87,7 @@ public class Tree <T extends Integer> implements Serializable {
         return y;
     }
 
-    int getBalance(Node<T> N) {
+    int getBalance(Node N) {
         if (N == null)
             return 0;
 
@@ -91,26 +95,28 @@ public class Tree <T extends Integer> implements Serializable {
     }
 
     public boolean remove(int id){
-        Node<T> node = findNode(id);
+        Node node = findNode(id);
         if(node == null)
             return false;
-        delete(root, node);
+        root = delete(root, node);
         return true;
     }
 
     //TODO: Fix root cant be deleted
-    private Node<T> delete(Node<T> pointer, Node<T> node){
+    private Node delete(Node pointer, Node node){
         if(node == null)
             return null;
         if(node.compareTo(pointer) < 0){
-            pointer.setLeft(delete(pointer.getLeft(), node));
+            Node left = delete(pointer.getLeft(), node);
+            pointer.setLeft(left);
+
         }
         else if(node.compareTo(pointer) > 0){
             pointer.setRight(delete(pointer.getRight(), node));
         }
         else {
             if(pointer.getLeft() == null || pointer.getRight() == null){
-                Node<T> temp = null;
+                Node temp = null;
                 if(pointer.getLeft() == null)
                     temp = pointer.getRight();
                 else
@@ -126,7 +132,7 @@ public class Tree <T extends Integer> implements Serializable {
                     pointer = temp;
             }
             else {
-                Node<T> temp = minValueNode(pointer.getRight());
+                Node temp = minValueNode(pointer.getRight());
                 pointer.setData(temp.getData());
                 pointer.setRight(delete(pointer.getRight(), temp));
             }
@@ -153,39 +159,26 @@ public class Tree <T extends Integer> implements Serializable {
         return pointer;
     }
 
-    private Node<T> minValueNode(Node<T> node){
-        Node<T> current = node;
+    private Node minValueNode(Node node){
+        Node current = node;
         while (current.getLeft() != null)
             current = current.getLeft();
         return current;
     }
 
     public Student find(int id){
-//        Node node = findNode(id);
-//        if(node != null)
-//            return node.getData();
+        Node node = findNode(id);
+        if(node != null)
+            return node.getData();
         return null;
     }
 
-//    private Node<T> findNode(int id){
-//        Node pointer = root;
-//        while (pointer != null){
-//            if(pointer.getData().getId() == id)
-//                return pointer;
-//            else if(pointer.getData().getId() > id)
-//                pointer = pointer.getLeft();
-//            else
-//                pointer = pointer.getRight();
-//        }
-//        return null;
-//    }
-
-    private Node<T> findNode(int data){
+    private Node findNode(int data){
         Node pointer = root;
         while (pointer != null){
-            if(pointer.getData() == data)
+            if(pointer.getData().getId() == data)
                 return pointer;
-            else if(pointer.getData() > data)
+            else if(pointer.getData().getId() > data)
                 pointer = pointer.getLeft();
             else
                 pointer = pointer.getRight();
@@ -194,7 +187,7 @@ public class Tree <T extends Integer> implements Serializable {
     }
 
     public String inOrder(){
-        return root.inOrder(1).toString();
+        return root.inOrder();
     }
 
     public void toFile(){
@@ -203,23 +196,5 @@ public class Tree <T extends Integer> implements Serializable {
 
     public static Tree fromFile(){
         return null;
-    }
-
-    public static void main(String[] args) {
-        Tree<Integer> tree = new Tree<>();
-        tree.add(10);
-        tree.add(20);
-        tree.add(30);
-        tree.add(40);
-        tree.add(50);
-
-        System.out.println(tree.inOrder());
-
-        if(tree.remove(10))
-            System.out.println("Removed");
-        else
-            System.out.println("Not found");
-
-        System.out.println(tree.inOrder());
     }
 }
