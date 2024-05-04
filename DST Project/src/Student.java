@@ -1,12 +1,16 @@
 package src;
 
 import src.structures.linkedList.LinkedList;
-
+import src.structures.Team;
 import java.util.Date;
+import src.structures.linkedList.Node;
+import static java.util.Objects.compare;
 
 public class Student implements Comparable<Student> {
     private LinkedList data;
     private int id;
+    Team team = new Team();
+    int teamId = team.teamId;
 
     //id index 0
     //gpa index 1
@@ -94,14 +98,21 @@ public class Student implements Comparable<Student> {
         data.edit(6, Nationality);
     }
 
-
-    public int compareGpa (){
-        return 0;
+    @Override
+    public int compareTo(Student student) {
+        return Double.compare(getGpa(),student.getGpa());
     }
 
-    @Override
-    public int compareTo(Student o) {
-        return 0;
+    public Team findTeam(int id){
+        Node current = team.getRoot();
+        Team currentTeam;
+        while (current != null){
+            currentTeam = (Team) current.getData();
+            if (currentTeam.teamId == id){
+                return currentTeam;
+            }
+        }
+        return null;
     }
 
     //get methodunun duzelmesini bekle

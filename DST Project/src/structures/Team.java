@@ -2,6 +2,7 @@ package src.structures;
 
 import src.structures.linkedList.LinkedList;
 import src.Student;
+import src.structures.linkedList.Node;
 
 import java.io.Serializable;
 
