@@ -100,6 +100,10 @@ public class Node implements Serializable, Comparable<Node> {
 
     @Override
     public int compareTo(Node o) {
-        return Integer.compare(getId(), o.getId());//TODO
+        return Integer.compare(getId(), o.getId());
+    }
+
+    public String toString() {
+        return inOrder();
     }
 }
