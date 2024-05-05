@@ -4,7 +4,7 @@ import src.Student;
 
 import java.io.Serializable;
 
-public class Node <T> implements Serializable {
+public class Node<T> implements Serializable {
     private T data;
 
     private double gpa;
