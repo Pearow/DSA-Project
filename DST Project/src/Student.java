@@ -2,11 +2,13 @@ package src;
 
 import src.structures.linkedList.LinkedList;
 import src.structures.Team;
+
+import java.io.Serializable;
 import java.util.Date;
 import src.structures.linkedList.Node;
 import static java.util.Objects.compare;
 
-public class Student implements Comparable<Student> {
+public class Student implements Serializable, Comparable<Student> {
     private LinkedList data;
     private int id;
     Team team = new Team();

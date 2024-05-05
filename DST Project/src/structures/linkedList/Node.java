@@ -1,7 +1,10 @@
 package src.structures.linkedList;
 
 import src.Student;
-public class Node<T> {
+
+import java.io.Serializable;
+
+public class Node <T> implements Serializable {
     private T data;
 
     private double gpa;
