@@ -61,7 +61,9 @@ public class Tree implements Serializable {
         x.setRight(y);
         y.setParent(x);
         y.setLeft(T2);
-        T2.setParent(y);
+
+        if(T2 != null)
+           T2.setParent(y);
 
         x.setHeight(Math.max(getHeight(x.getLeft()), getHeight(x.getRight())) + 1);
         y.setHeight(Math.max(getHeight(y.getLeft()), getHeight(y.getRight())) + 1);
@@ -80,7 +82,9 @@ public class Tree implements Serializable {
         y.setLeft(x);
         x.setParent(y);
         x.setRight(T2);
-        T2.setParent(x);
+
+        if(T2 != null)
+           T2.setParent(x);
 
         x.setHeight(Math.max(getHeight(x.getLeft()), getHeight(x.getRight())) + 1);
         y.setHeight(Math.max(getHeight(y.getLeft()), getHeight(y.getRight())) + 1);
@@ -192,6 +196,7 @@ public class Tree implements Serializable {
         return root.inOrder();
     }
 
+
     public void toFile() throws IOException {
         File file = new File("data");
         file.mkdir();
@@ -210,7 +215,7 @@ public class Tree implements Serializable {
         Tree tree = new Tree();
         Random random = new Random();
         for (int i = 1; i < 25; i++) {
-            tree.add(new Student(random.nextInt(100), random.nextDouble(4), "Student ", Integer.toString(i), new Date(random.nextInt(1995, 2005), random.nextInt(1, 12), random.nextInt(1, 28)), "Computer Science", "American"));
+            tree.add(new Student(random.nextInt(100), random.nextDouble(4), "Student ", Integer.toString(i), new Date(random.nextInt(1995, 2005), random.nextInt(1, 12), random.nextInt(1, 28)), "Computer Science", "American", "password"));
         }
         System.out.println(tree.inOrder());
 

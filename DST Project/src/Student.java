@@ -128,6 +128,18 @@ public class Student implements Serializable, Comparable<Student> {
         return null;
     }
 
+    @Override
+    public String toString(){
+        return "ID: " + getId() + "\n" +
+                "GPA: " + getGpa() + "\n" +
+                "Name: " + getName() + "\n" +
+                "Surname: " + getSurname() + "\n" +
+                "Date of Birth: " + getDob() + "\n" +
+                "Department: " + getDepartment() + "\n" +
+                "Nationality: " + getNationality() + "\n" +
+                "Password: " + getPassword() + "\n";
+    }
+
     //get methodunun duzelmesini bekle
     public static void main(String[] args) {
 

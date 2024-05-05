@@ -1,15 +1,17 @@
+import java.io.IOException;
 import java.util.Date;
 import src.Student;
-import src.structures.Team;
-import src.structures.linkedList.LinkedList;
-import src.structures.linkedList.Node;
+import src.structures.tree.Tree;
+
 import java.io.Serializable;
+import java.util.Random;
 import java.util.Scanner;
 
 
 
 public class Main implements Serializable {
-    public static void main(String[] args) {
+    public static Tree testTree = new Tree();
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         // Create a new student
 //        Student student = new Student();
 //        student.setId(1);
@@ -44,25 +46,33 @@ public class Main implements Serializable {
         testInterface();
     }
 
-    public static void test1_addStudents(){
+    public static void test1_addStudents() throws IOException, ClassNotFoundException{
+        Random random = new Random();
         System.out.println("Running test1_addStudents");
-        Student[] students = new Student[25];
         for (int i = 0; i < 25; i++) {
-           students[i] = new Student(i, 3.5, "Student" + i, "Surname" + i, new Date(2000, 1, 1), "Computer Science", "American", "password");
-           System.out.println(students[i].getId() + " added");
+           testTree.add(new Student(i, random.nextDouble(4), "Student" + i, "Surname" + i, new Date(2000, 1, 1), "Computer Science", "American", "password"));
+           System.out.println("Added student " + i + " to the tree");
         }
+        System.out.println("Running test2");
+        System.out.println(testTree.inOrder());
+        testTree.toFile();
     }
 
-    public static void test2_printStudents(){
-        System.out.println("Running test2_printStudents");
-    }
-
-    public static void test3_printStudentsFromDisk(){
+    public static void test3_printStudentsFromDisk() throws IOException, ClassNotFoundException {
         System.out.println("Running test3_printStudentsFromDisk");
+        System.out.println("Reading data from disk");
+        System.out.println(testTree.inOrder());
     }
 
-    public static void test4_removeStudent(){
+    public static void test4_removeStudent() throws IOException, ClassNotFoundException {
         System.out.println("Running test4_removeStudent");
+        System.out.println("Type the id of the student you want to remove:");
+        Scanner scanner = new Scanner(System.in);
+        int id = scanner.nextInt();
+        testTree.remove(id);
+        System.out.println("Student with id " + id + " removed");
+        System.out.println(testTree.inOrder());
+        testTree.toFile();
     }
 
     public static void test5_orderByGPA(){
@@ -73,7 +83,7 @@ public class Main implements Serializable {
         System.out.println("Running test6_10StudentsByGPA");
     }
 
-    public static void testInterface(){
+    public static void testInterface() throws IOException, ClassNotFoundException{
         System.out.println("Select test case or type 0 to exit:");
         System.out.println("1");
         System.out.println("2");
@@ -94,7 +104,7 @@ public class Main implements Serializable {
                     test1_addStudents();
                     break;
                 case 2:
-                    test2_printStudents();
+                    System.out.println("Test 2 is automatic, it will print the tree in order after adding students to it.");
                     break;
                 case 3:
                     test3_printStudentsFromDisk();
