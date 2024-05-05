@@ -1,10 +1,11 @@
 package src.structures.linkedList;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-public class LinkedList {
+public class LinkedList implements Serializable {
    private Node root;
    private int lenght;
 

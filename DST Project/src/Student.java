@@ -2,9 +2,10 @@ package src;
 
 import src.structures.linkedList.LinkedList;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Student implements Comparable<Student> {
+public class Student implements Serializable, Comparable<Student> {
     private LinkedList data;
     private int id;
 
