@@ -1,16 +1,16 @@
 package src.structures.tree;
-
-import src.Student;
-
 import java.io.*;
 import java.util.*;
 
+import src.Student;
+import src.structures.hasID;
+
 //TODO: Change recursive to loop
-public class Tree implements Serializable {
+public class Tree<Student extends hasID> implements Serializable {
     private Node root;
 
     public void add(Student data) {
-        Node newNode = new Node(data);
+        Node<Student> newNode = new Node<>(data);
         if(root != null)
             add(root, null, newNode);
         else
@@ -170,14 +170,9 @@ public class Tree implements Serializable {
         return current;
     }
 
-    public Student find(int id){
-        Node node = findNode(id);
-        if(node != null)
-            return node.getData();
-        return null;
-    }
 
-    private Node findNode(int data){
+
+    Node findNode(int data){
         Node pointer = root;
         while (pointer != null){
             if(pointer.getData().getId() == data)
@@ -194,21 +189,9 @@ public class Tree implements Serializable {
         return root.inOrder();
     }
 
-    public Student[] toArray(){
+    public ArrayList<Student> toArrayList(){
         ArrayList<Student> students = new ArrayList<>();
-        root.inOrder(students);
-        return students.toArray(new Student[0]);
-    }
-
-    public Student[] sortByGpa(){
-        Student[] students = toArray();
-        Arrays.sort(students, Collections.reverseOrder());
-        return students;
-    }
-
-    public Student[] sortByGpa(int n){
-        Student[] students = sortByGpa();
-        return Arrays.copyOfRange(students, 0, n);
+        return root.inOrder(students);
     }
 
 
