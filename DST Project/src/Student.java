@@ -1,12 +1,18 @@
 package src;
 
 import src.structures.linkedList.LinkedList;
+import src.structures.Team;
 
+import java.io.Serializable;
 import java.util.Date;
+import src.structures.linkedList.Node;
+import static java.util.Objects.compare;
 
-public class Student implements Comparable<Student> {
+public class Student implements Serializable, Comparable<Student> {
     private LinkedList data;
     private int id;
+    Team team = new Team();
+    int teamId = team.teamId;
 
     //id index 0
     //gpa index 1
@@ -15,6 +21,7 @@ public class Student implements Comparable<Student> {
     //dob index 4
     //department index 5
     //nationality index 6
+    //password index 7
 
     public Student() {
         data = new LinkedList();
@@ -25,9 +32,10 @@ public class Student implements Comparable<Student> {
         data.add(new Date(2000, 1, 1));
         data.add("Computer Science");
         data.add("American");
+        data.add("password");
     }
 
-    public Student(int id, double gpa, String name, String surname, Date dob, String department, String nationality) {
+    public Student(int id, double gpa, String name, String surname, Date dob, String department, String nationality, String password) {
         data = new LinkedList();
         data.add(id);
         data.add(gpa);
@@ -36,6 +44,7 @@ public class Student implements Comparable<Student> {
         data.add(dob);
         data.add(department);
         data.add(nationality);
+        data.add(password);
     }
 
     public int getId() {
@@ -94,21 +103,48 @@ public class Student implements Comparable<Student> {
         data.edit(6, Nationality);
     }
 
+    public String getPassword(){
+        return data.get(7, String.class);
+    }
 
-    public int compareGpa (){
-        return 0;
+    public void setPassword(String password) {
+        data.edit(7, password);
     }
 
     @Override
-    public int compareTo(Student o) {
-        return 0;
+    public int compareTo(Student student) {
+        return Double.compare(getGpa(),student.getGpa());
+    }
+
+    public Team findTeam(int id){
+        Node current = team.getRoot();
+        Team currentTeam;
+        while (current != null){
+            currentTeam = (Team) current.getData();
+            if (currentTeam.teamId == id){
+                return currentTeam;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public String toString(){
+        return "ID: " + getId() + "\n" +
+                "GPA: " + getGpa() + "\n" +
+                "Name: " + getName() + "\n" +
+                "Surname: " + getSurname() + "\n" +
+                "Date of Birth: " + getDob() + "\n" +
+                "Department: " + getDepartment() + "\n" +
+                "Nationality: " + getNationality() + "\n" +
+                "Password: " + getPassword() + "\n";
     }
 
     //get methodunun duzelmesini bekle
     public static void main(String[] args) {
 
         Student student1 = new Student();
-        Student student2 = new Student(2, 3.0, "Jane", "Doe", new Date(2000, 1, 1), "Computer Science", "American");
+        Student student2 = new Student(2, 3.0, "Jane", "Doe", new Date(2000, 1, 1), "Computer Science", "American", "password");
 
         System.out.println(student1.getId());
         System.out.println(student1.getGpa());
@@ -117,6 +153,7 @@ public class Student implements Comparable<Student> {
         System.out.println(student1.getDob());
         System.out.println(student1.getDepartment());
         System.out.println(student1.getNationality());
+        System.out.println(student1.getPassword());
 
         System.out.println(student2.getId());
         System.out.println(student2.getGpa());
@@ -125,6 +162,7 @@ public class Student implements Comparable<Student> {
         System.out.println(student2.getDob());
         System.out.println(student2.getDepartment());
         System.out.println(student2.getNationality());
+        System.out.println(student2.getPassword());
 
         student2.setId(3);
 
