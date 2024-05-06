@@ -3,9 +3,7 @@ package src.structures.tree;
 import src.Student;
 
 import java.io.*;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
+import java.util.*;
 
 //TODO: Change recursive to loop
 public class Tree implements Serializable {
@@ -196,6 +194,23 @@ public class Tree implements Serializable {
         return root.inOrder();
     }
 
+    public Student[] toArray(){
+        ArrayList<Student> students = new ArrayList<>();
+        root.inOrder(students);
+        return students.toArray(new Student[0]);
+    }
+
+    public Student[] sortByGpa(){
+        Student[] students = toArray();
+        Arrays.sort(students, Collections.reverseOrder());
+        return students;
+    }
+
+    public Student[] sortByGpa(int n){
+        Student[] students = sortByGpa();
+        return Arrays.copyOfRange(students, 0, n);
+    }
+
 
     public void toFile() throws IOException {
         File file = new File("data");
@@ -209,22 +224,5 @@ public class Tree implements Serializable {
             return new Tree();
         ObjectInputStream stream = new ObjectInputStream(new FileInputStream("data/test.dat"));
         return (Tree) stream.readObject();
-    }
-
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Tree tree = new Tree();
-        Random random = new Random();
-        for (int i = 1; i < 25; i++) {
-            tree.add(new Student(random.nextInt(100), random.nextDouble(4), "Student ", Integer.toString(i), new Date(random.nextInt(1995, 2005), random.nextInt(1, 12), random.nextInt(1, 28)), "Computer Science", "American", "password"));
-        }
-        System.out.println(tree.inOrder());
-
-        tree.toFile();
-        Tree tree2 = Tree.fromFile();
-
-        System.out.println("Second tree: ");
-
-        System.out.println(tree2.inOrder());
-
     }
 }
