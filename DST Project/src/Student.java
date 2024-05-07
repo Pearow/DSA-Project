@@ -116,17 +116,17 @@ public class Student implements Serializable, Comparable<Student> {
         return Double.compare(getGpa(),student.getGpa());
     }
 
-    public Team findTeam(int id){
-        Node current = team.getRoot();
-        Team currentTeam;
-        while (current != null){
-            currentTeam = (Team) current.getData();
-            if (currentTeam.teamId == id){
-                return currentTeam;
-            }
-        }
-        return null;
-    }
+//    public Team findTeam(int id){
+//        Node current = team.getRoot();
+//        Team currentTeam;
+//        while (current != null){
+//            currentTeam = (Team) current.getData();
+//            if (currentTeam.teamId == id){
+//                return currentTeam;
+//            }
+//        }
+//        return null;
+//    }
 
     @Override
     public String toString(){

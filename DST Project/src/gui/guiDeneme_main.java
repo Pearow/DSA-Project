@@ -25,7 +25,7 @@ public class guiDeneme_main extends JFrame {
        add(hello_world);
 //       JLabel text = new JLabel("This is a test");
 //       add(text);
-       this.getContentPane().setBackground(new Color(210,210,210));
+       this.getContentPane().setBackground(new Color(Color.LIGHT_GRAY.getRGB()));
        this.setLayout(null);
         //this.pack(); //sets the size of the frame according to the components
         // Make the frame visible
