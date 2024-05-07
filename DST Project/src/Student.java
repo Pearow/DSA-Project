@@ -10,9 +10,7 @@ import static java.util.Objects.compare;
 
 public class Student implements Serializable, Comparable<Student> {
     private LinkedList data;
-    private int id;
-    Team team = new Team();
-    int teamId = team.teamId;
+    final LinkedList teams = new LinkedList();
 
     //id index 0
     //gpa index 1
@@ -117,7 +115,7 @@ public class Student implements Serializable, Comparable<Student> {
     }
 
     public Team findTeam(int id){
-        Node current = team.getRoot();
+        Node current = teams.getRoot();
         Team currentTeam;
         while (current != null){
             currentTeam = (Team) current.getData();
