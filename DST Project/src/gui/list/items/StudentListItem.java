@@ -1,4 +1,4 @@
-package src.structures.gui.list.items;
+package src.gui.list.items;
 
 import src.Student;
 
@@ -9,15 +9,13 @@ import java.util.Date;
 
 public class StudentListItem extends JPanel{
     private static boolean cool = true;
-    private JLabel studentName;
-    private JButton addToTeam;
-    private Student student;
+    public final Student student;
 
     public StudentListItem(Student student){
         this.student = student;
         //Set up components
-        studentName = new JLabel(student.getName() + " " + student.getSurname());
-        addToTeam = new JButton("+");
+        JLabel studentName = new JLabel(student.getName() + " " + student.getSurname());
+        JButton addToTeam = new JButton("+");
 
         //Set layout
         setLayout(new BorderLayout());

@@ -1,5 +1,6 @@
-package src.structures.gui.list;
-import src.structures.gui.list.items.StudentListItem;
+package src.gui.list;
+import src.gui.list.items.TeammateListItem;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -24,7 +25,7 @@ public class List extends JScrollPane {
         List studentList = new List();
         frame.getContentPane().add(studentList, BorderLayout.CENTER);
         for(int i = 1; i < 100; i++)
-            studentList.add(new StudentListItem(new src.Student(123456, 3.5,"John" + i, "Doe", new java.util.Date(2000, 1, 1), "Computer Science", "Turkish", "123456")));
+            studentList.add(new TeammateListItem(new src.Student(123456, 3.5,"John" + i, "Doe", new java.util.Date(2000, 1, 1), "Computer Science", "Turkish", "123456")));
 
         frame.setVisible(true);
     }
