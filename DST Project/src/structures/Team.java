@@ -20,15 +20,15 @@ public class Team extends LinkedList implements Serializable {
 
     public Team(Student student) {
         this();
-        this.addStudent(student);
+        this.add(student);
     }
 
     public int getStudentCount() {
         return this.getLenght();
     }
 
-    public void addStudent(Student student) {
-        this.add(student);
+    public void add(Student student) {
+        super.add(student);
     }
 
 }
