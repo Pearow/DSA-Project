@@ -1,5 +1,6 @@
 package src;
 
+import src.structures.hasID;
 import src.structures.linkedList.LinkedList;
 import src.structures.Team;
 
@@ -8,9 +9,9 @@ import java.util.Date;
 import src.structures.linkedList.Node;
 import static java.util.Objects.compare;
 
-public class Student implements Serializable, Comparable<Student> {
+public class Student implements Serializable, Comparable<Student>, hasID {
     private LinkedList data;
-    final LinkedList teams = new LinkedList();
+    final LinkedList team = new LinkedList();
 
     //id index 0
     //gpa index 1
@@ -115,7 +116,7 @@ public class Student implements Serializable, Comparable<Student> {
     }
 
     public Team findTeam(int id){
-        Node current = teams.getRoot();
+        Node current = team.getRoot();
         Team currentTeam;
         while (current != null){
             currentTeam = (Team) current.getData();

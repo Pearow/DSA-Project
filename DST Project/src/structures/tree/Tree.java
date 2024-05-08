@@ -1,18 +1,16 @@
 package src.structures.tree;
+import java.io.*;
+import java.util.*;
 
 import src.Student;
-
-import java.io.*;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
+import src.structures.hasID;
 
 //TODO: Change recursive to loop
-public class Tree implements Serializable {
+public class Tree<Student extends hasID> implements Serializable {
     private Node root;
 
     public void add(Student data) {
-        Node newNode = new Node(data);
+        Node<Student> newNode = new Node<>(data);
         if(root != null)
             add(root, null, newNode);
         else
@@ -172,14 +170,9 @@ public class Tree implements Serializable {
         return current;
     }
 
-    public Student find(int id){
-        Node node = findNode(id);
-        if(node != null)
-            return node.getData();
-        return null;
-    }
 
-    private Node findNode(int data){
+
+    Node findNode(int data){
         Node pointer = root;
         while (pointer != null){
             if(pointer.getData().getId() == data)
@@ -196,6 +189,11 @@ public class Tree implements Serializable {
         return root.inOrder();
     }
 
+    public ArrayList<Student> toArrayList(){
+        ArrayList<Student> students = new ArrayList<>();
+        return root.inOrder(students);
+    }
+
 
     public void toFile() throws IOException {
         File file = new File("data");
@@ -209,22 +207,5 @@ public class Tree implements Serializable {
             return new Tree();
         ObjectInputStream stream = new ObjectInputStream(new FileInputStream("data/test.dat"));
         return (Tree) stream.readObject();
-    }
-
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Tree tree = new Tree();
-        Random random = new Random();
-        for (int i = 1; i < 25; i++) {
-            tree.add(new Student(random.nextInt(100), random.nextDouble(4), "Student ", Integer.toString(i), new Date(random.nextInt(1995, 2005), random.nextInt(1, 12), random.nextInt(1, 28)), "Computer Science", "American", "password"));
-        }
-        System.out.println(tree.inOrder());
-
-        tree.toFile();
-        Tree tree2 = Tree.fromFile();
-
-        System.out.println("Second tree: ");
-
-        System.out.println(tree2.inOrder());
-
     }
 }
