@@ -1,12 +1,9 @@
 package src.structures.tree;
-
-import src.Student;
-
+import src.structures.hasID;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class Node implements Serializable, Comparable<Node> {
+public class Node <Student extends hasID> implements Serializable, Comparable<Node> {
     private Student data;
     private Node left;
     private Node right;
