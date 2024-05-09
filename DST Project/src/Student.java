@@ -13,12 +13,12 @@ public class Student implements Serializable, Comparable<Student>, hasID {
     public final LinkedList teams = new LinkedList();
 
     //id index 0
-    //gpa index 1
+    //gpa index 1  ex: == (+20), +-0.3 (+15), +-0.7 (+10), +-1.2 (+5), else (+0)
     //name index 2
     //surname index 3
     //dob index 4
-    //department index 5
-    //nationality index 6
+    //department index 5  ex: Biomedical Engineering, Computer  Engineering, Civil Engineering, Industrial Engineering, Machine Engineering, Electrical Engineering, Software Engineering
+    //nationality index 6 ex: American, Australian, Brazilian, English , German, Lebanese, Kazakhstani, Palestinian, Portuguese, Turkish
     //password index 7
 
     public Student() {
@@ -136,6 +136,128 @@ public class Student implements Serializable, Comparable<Student>, hasID {
                 "Department: " + getDepartment() + "\n" +
                 "Nationality: " + getNationality() + "\n" +
                 "Password: " + getPassword() + "\n";
+    }
+
+    //department ex: Biomedical Engineering, Computer  Engineering, Civil Engineering, Industrial Engineering, Machine Engineering, Electrical Engineering, Software Engineering
+    //nationality ex: American, Australian, Brazilian, English , German, Lebanese, Kazakhstani, Palestinian, Portuguese, Turkish
+    //== (+20), +-0.3 (+15), +-0.7 (+10), +-1.2 (+5), else (+0)
+    public int getCompatibility(Student o){
+        int puan =0;
+
+        if(getDepartment().contentEquals(o.getDepartment())){
+                puan+=20;
+        }
+        else if (getDepartment().contentEquals("Biomedical Engineering") && (o.getDepartment().contentEquals("Computer Engineering") || o.getDepartment().contentEquals("Machine Engineering") || o.getDepartment().contentEquals("Electrical Engineering"))) {
+                puan+=5;
+        }
+        else if (getDepartment().contentEquals("Computer Engineering") && (o.getDepartment().contentEquals("Electrical Engineering") || o.getDepartment().contentEquals("Software Engineering"))) {
+                puan+=15;
+        }
+        else if(getDepartment().contentEquals("Computer Engineering") && o.getDepartment().contentEquals("Biomedical Engineering")){
+                puan+=5;
+        }
+        else if (getDepartment().contentEquals("Civil Engineering") && (o.getDepartment().contentEquals("Industrial Engineering") || o.getDepartment().contentEquals("Machine Engineering"))) {
+                puan+=10;
+        }
+        else if (getDepartment().contentEquals("Industrial Engineering") && (o.getDepartment().contentEquals("Civil Engineering") || o.getDepartment().contentEquals("Machine Engineering"))) {
+            puan+=10;
+        }
+        else if (getDepartment().contentEquals("Industrial Engineering") && o.getDepartment().contentEquals("Software Engineering")){
+            puan+=5;
+        }
+        else if (getDepartment().contentEquals("Machine Engineering") && ( o.getDepartment().contentEquals("Civil Engineering") || o.getDepartment().contentEquals("Industrial Engineering") || o.getDepartment().contentEquals("Electrical Engineering"))) {
+            puan+=10;
+        }
+        else if(getDepartment().contentEquals("Machine Engineering") && o.getDepartment().contentEquals("Biomedical Engineering")){
+            puan+=5;
+        }
+        else if (getDepartment().contentEquals("Electrical Engineering") && o.getDepartment().contentEquals("Computer Engineering")) {
+            puan+=15;
+        }
+         else if(getDepartment().contentEquals("Electrical Engineering") && o.getDepartment().contentEquals("Machine Engineering")){
+            puan+=10;
+        }
+         else if(getDepartment().contentEquals("Electrical Engineering") && o.getDepartment().contentEquals("Biomedical Engineering")){
+            puan+=5;
+        }
+         else if (getDepartment().contentEquals("Software Engineering") && o.getDepartment().contentEquals("Computer Engineering")) {
+            puan+=15;
+        }
+         else if (getDepartment().contentEquals("Software Engineering") && o.getDepartment().contentEquals("Industrial Engineering")) {
+            puan+=5;
+        }
+        //
+        if (getNationality().contentEquals(o.getNationality())){
+            puan+=20;
+        }
+         else if (getNationality().contentEquals("American") && ((o.getNationality().contentEquals("Australian") || o.getNationality().contentEquals("English")))) {
+            puan+=15;
+
+        }
+        else if (getNationality().contentEquals("English") && ((o.getNationality().contentEquals("Australian") || o.getNationality().contentEquals("American")))) {
+            puan+=15;
+
+        }
+         else if (getNationality().contentEquals("Australian") && ((o.getNationality().contentEquals("English") || o.getNationality().contentEquals("American")))) {
+            puan+=15;
+
+        }
+         else if (getNationality().contentEquals("Turkish") && ((o.getNationality().contentEquals("Kazakhstani")))) {
+            puan+=15;
+
+        }
+         else if (getNationality().contentEquals("Turkish") && ((o.getNationality().contentEquals("Lebanese")||o.getNationality().contentEquals("German")||o.getNationality().contentEquals("Palestinian")))) {
+            puan+=5;
+
+        }
+         else if (getNationality().contentEquals("Lebanese") && ((o.getNationality().contentEquals("Turkish")))) {
+            puan+=5;
+
+        }
+        else if (getNationality().contentEquals("Lebanese") && ((o.getNationality().contentEquals("Palestinian")))) {
+        puan+=15;
+        }
+        else if (getNationality().contentEquals("German") && ((o.getNationality().contentEquals("Turkish")))) {
+        puan+=5;
+        }
+        else if (getNationality().contentEquals("German") && ((o.getNationality().contentEquals("English")))) {
+        puan+=15;
+        }
+        else if (getNationality().contentEquals("Kazakhstani") && ((o.getNationality().contentEquals("Turkish")))) {
+            puan+=15;
+        }
+       else  if (getNationality().contentEquals("Palestinian") && ((o.getNationality().contentEquals("Lebanese")))) {
+            puan+=15;
+        }
+        else  if (getNationality().contentEquals("Palestinian") && ((o.getNationality().contentEquals("Turkısh")))) {
+            puan+=5;
+        }
+        else if (getNationality().contentEquals("Brazilian") && ((o.getNationality().contentEquals("Portuguese")))) {
+            puan+=15;
+
+        }
+        else if (getNationality().contentEquals("Brazilian") && ((o.getNationality().contentEquals("American")))) {
+           puan+=5;}
+        else if (getNationality().contentEquals("Portuguese") && ((o.getNationality().contentEquals("Brazilian")))) {
+            puan+=15;
+        }else if (getNationality().contentEquals("Portuguese") && ((o.getNationality().contentEquals("Turkish")))) {
+            puan+=5;
+        }
+        //
+        double difference = Math.abs(getGpa() - o.getGpa());
+        if(getGpa() == o.getGpa()){
+            puan+=20;
+        }
+        if(difference <= 0.3){
+            puan+=15;
+        }
+        else if(difference <= 0.7){
+            puan+=10;
+        }
+        else if(difference <= 1.2){
+            puan+=5;
+        }
+        return puan;
     }
 
     //get methodunun duzelmesini bekle
