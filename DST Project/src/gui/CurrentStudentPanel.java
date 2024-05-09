@@ -27,14 +27,14 @@ public class CurrentStudentPanel extends JPanel implements ActionListener {
         setPreferredSize(new Dimension(200, 200));
 
 
-        // Create panel for student info
+        // Create panel for team info
         currentStudentInfoPanel = new JPanel();
         currentStudentInfoPanel.setLayout(new BoxLayout(currentStudentInfoPanel, BoxLayout.Y_AXIS));
         currentStudentInfoPanel.add(currentStudentName);
         currentStudentInfoPanel.add(currentStudentId);
         add(currentStudentInfoPanel);
 
-        // Add button to change current student
+        // Add button to change current team
         add(changeCurrentStudentButton);
     }
 
@@ -49,7 +49,7 @@ public class CurrentStudentPanel extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == changeCurrentStudentButton) {
-            // Change current student
+            // Change current team
         }
     }
 }

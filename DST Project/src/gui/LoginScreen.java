@@ -28,7 +28,7 @@ public class LoginScreen extends JPanel implements ActionListener {
         add(idField);
         add(passwordField);
 
-        // Add button to change current student
+        // Add button to change current team
         add(loginButton);
 
         loginButton.addActionListener(this);
@@ -61,7 +61,7 @@ public class LoginScreen extends JPanel implements ActionListener {
             else{
                 JOptionPane.showMessageDialog(this, "Invalid ID or password", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            // Change current student
+            // Change current team
         }
     }
 

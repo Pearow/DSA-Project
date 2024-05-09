@@ -7,7 +7,7 @@ import java.util.Date;
 
 import src.Student;
 import src.structures.Team;
-import src.structures.tree.Tree;
+import src.gui.list.items.TeamsList;
 
 public class AddToTeamPopup extends JDialog implements ActionListener {
 
@@ -20,11 +20,12 @@ public class AddToTeamPopup extends JDialog implements ActionListener {
     private JLabel infoLabelDepartment;
     private JLabel infoLabelNationality;
     private Student student;
+    private JDialog TeamsListItem;
 
     public AddToTeamPopup(JFrame parent, Student student) {
         super(parent, "Add to Team", true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(300, 200);
+        setSize(300, 220);
         setLocationRelativeTo(parent);
         setLayout(null);
 
@@ -71,6 +72,7 @@ public class AddToTeamPopup extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addToTeamButton) {
+            TeamsListItem = new TeamsList(new JFrame(), new Team(1));
             System.out.println("Add to team button clicked");
             dispose();
         }

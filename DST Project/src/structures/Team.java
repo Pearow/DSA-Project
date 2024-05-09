@@ -23,6 +23,10 @@ public class Team extends LinkedList implements Serializable {
         this.add(student);
     }
 
+    public int getId() {
+        return this.teamId;
+    }
+
     public int getStudentCount() {
         return this.getLenght();
     }
