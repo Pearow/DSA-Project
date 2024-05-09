@@ -1,4 +1,4 @@
-package src.structures.gui;
+package src.gui;
 
 import javax.swing.*;
 
