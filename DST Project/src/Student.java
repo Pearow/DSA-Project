@@ -229,7 +229,7 @@ public class Student implements Serializable, Comparable<Student>, hasID {
        else  if (getNationality().contentEquals("Palestinian") && ((o.getNationality().contentEquals("Lebanese")))) {
             puan+=15;
         }
-        else  if (getNationality().contentEquals("Palestinian") && ((o.getNationality().contentEquals("Turkısh")))) {
+        else  if (getNationality().contentEquals("Palestinian") && ((o.getNationality().contentEquals("Turkish")))) {
             puan+=5;
         }
         else if (getNationality().contentEquals("Brazilian") && ((o.getNationality().contentEquals("Portuguese")))) {
@@ -248,7 +248,7 @@ public class Student implements Serializable, Comparable<Student>, hasID {
         if(getGpa() == o.getGpa()){
             puan+=20;
         }
-        if(difference <= 0.3){
+        else if(difference <= 0.3){
             puan+=15;
         }
         else if(difference <= 0.7){
@@ -262,43 +262,59 @@ public class Student implements Serializable, Comparable<Student>, hasID {
 
     public static void main(String[] args) {
 
-        Student student1 = new Student();
-        Student student2 = new Student(2, 3.0, "Jane", "Doe", new Date(2000, 1, 1), "Computer Engineering", "American", "password");
+        Student John = new Student();
+        Student Jane = new Student(2, 3.0, "Jane", "Doe", new Date(2000, 1, 1), "Computer Engineering", "American", "password");
 
-        System.out.println(student1.getId());
-        System.out.println(student1.getGpa());
-        System.out.println(student1.getName());
-        System.out.println(student1.getSurname());
-        System.out.println(student1.getDob());
-        System.out.println(student1.getDepartment());
-        System.out.println(student1.getNationality());
-        System.out.println(student1.getPassword());
-
-        System.out.println(student2.getId());
-        System.out.println(student2.getGpa());
-        System.out.println(student2.getName());
-        System.out.println(student2.getSurname());
-        System.out.println(student2.getDob());
-        System.out.println(student2.getDepartment());
-        System.out.println(student2.getNationality());
-        System.out.println(student2.getPassword());
-
-        student2.setId(3);
-
-        System.out.println(student2.getId());
+//        System.out.println(John.getId());
+//        System.out.println(John.getGpa());
+//        System.out.println(John.getName());
+//        System.out.println(John.getSurname());
+//        System.out.println(John.getDob());
+//        System.out.println(John.getDepartment());
+//        System.out.println(John.getNationality());
+//        System.out.println(John.getPassword());
+//
+//        System.out.println(Jane.getId());
+//        System.out.println(Jane.getGpa());
+//        System.out.println(Jane.getName());
+//        System.out.println(Jane.getSurname());
+//        System.out.println(Jane.getDob());
+//        System.out.println(Jane.getDepartment());
+//        System.out.println(Jane.getNationality());
+//        System.out.println(Jane.getPassword());
+//
+//        Jane.setId(3);
+//
+//        System.out.println(Jane.getId());
 
         //Test yapilcak ogrenciler burada olusturulacak
-        Student student3 = new Student(3, 3.4, "Kerem", "Serter", new Date(2000, 1, 1), "Software Engineering", "Turkish", "password");
-        Student student4 = new Student(3, 3.6, "Salim", "Ucar", new Date(2000, 1, 1), "Software Engineering", "Turkish", "password");
-        Student student5 = new Student(3, 3.0, "Azizcan", "Tam", new Date(2000, 1, 1), "Software Engineering", "Turkish", "password");
-        Student student6 = new Student(3, 2.2, "Hans", "Flammenwerfer", new Date(2000, 1, 1), "Machine Engineering", "German", "password");
-        Student student7 = new Student(3, 0.7, "Cristiano Ronaldo", "Doe", new Date(2000, 1, 1), "Biomedical Engineering", "Portuguese", "password");
-        Student student8 = new Student(3, 2.8, "Abdulrezzak", "Palestinian", new Date(2000, 1, 1), "Civil Engineering", "Palestinian", "password");
-        Student student9 = new Student(3, 3.3, "Charles", "King", new Date(2000, 1, 1), "Electrical Engineering", "English", "password");
-        Student student10 = new Student(3, 4.0, "Sniper", "TF2", new Date(2000, 1, 1), "Industrial Engineering", "Australian", "password");
-        Student student11 = new Student(3, 3.7, "Fatima", "Lebanese", new Date(2000, 1, 1), "Civil Engineering", "American", "password");
-        Student student12 = new Student(3, 1.7, "Seriz", "Kazakhstani", new Date(2000, 1, 1), "Electrical Engineering", "Kazakhstani", "password");
-        Student student13 = new Student(3, 2.6, "Pele", "King", new Date(2000, 1, 1), "Machine Engineering", "Brazilian", "password");
+        Student Kerem = new Student(3, 3.4, "Kerem", "Serter", new Date(2000, 1, 1), "Software Engineering", "Turkish", "password");
+        Student Salim = new Student(3, 3.6, "Salim", "Ucar", new Date(2000, 1, 1), "Software Engineering", "Turkish", "password");
+        Student Aziz = new Student(3, 3.0, "Azizcan", "Tam", new Date(2000, 1, 1), "Software Engineering", "Turkish", "password");
+        Student Hans = new Student(3, 2.2, "Hans", "Flammenwerfer", new Date(2000, 1, 1), "Machine Engineering", "German", "password");
+        Student Cristiano = new Student(3, 0.7, "Cristiano Ronaldo", "Doe", new Date(2000, 1, 1), "Biomedical Engineering", "Portuguese", "password");
+        Student Abdulrezzak = new Student(3, 2.8, "Abdulrezzak", "Palestinian", new Date(2000, 1, 1), "Civil Engineering", "Palestinian", "password");
+        Student Charles = new Student(3, 3.3, "Charles", "King", new Date(2000, 1, 1), "Electrical Engineering", "English", "password");
+        Student Sniper = new Student(3, 4.0, "Sniper", "TF2", new Date(2000, 1, 1), "Industrial Engineering", "Australian", "password");
+        Student Fatima = new Student(3, 3.7, "Fatima", "Lebanese", new Date(2000, 1, 1), "Civil Engineering", "American", "password");
+        Student Seriz = new Student(3, 1.7, "Seriz", "Kazakhstani", new Date(2000, 1, 1), "Electrical Engineering", "Kazakhstani", "password");
+        Student Pele = new Student(3, 2.6, "Pele", "King", new Date(2000, 1, 1), "Machine Engineering", "Brazilian", "password");
 
+
+        System.out.println(Pele.getCompatibility(John));
+        System.out.println(Pele.getCompatibility(Jane));
+        System.out.println(Pele.getCompatibility(Kerem));
+        System.out.println(Pele.getCompatibility(Salim));
+        System.out.println(Pele.getCompatibility(Aziz));
+        System.out.println(Pele.getCompatibility(Hans));
+        System.out.println(Pele.getCompatibility(Cristiano));
+        System.out.println(Pele.getCompatibility(Abdulrezzak));
+        System.out.println(Pele.getCompatibility(Charles));
+        System.out.println(Pele.getCompatibility(Sniper));
+        System.out.println(Pele.getCompatibility(Fatima));
+        System.out.println(Pele.getCompatibility(Seriz));
+        System.out.println(Pele.getCompatibility(Pele));
+
+        //compatibility tests completed
     }
 }
