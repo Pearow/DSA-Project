@@ -195,17 +195,17 @@ public class Tree<Student extends hasID> implements Serializable {
     }
 
 
-    public void toFile() throws IOException {
+    public void toFile(String fileName) throws IOException {
         File file = new File("data");
         file.mkdir();
-        ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("data/test.dat"));
+        ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("data/" + fileName));
         stream.writeObject(this);
     }
 
-    public static Tree fromFile() throws IOException, ClassNotFoundException{
-        if(!new File("data/test.dat").exists())
+    public static Tree fromFile(String fileName) throws IOException, ClassNotFoundException{
+        if(!new File("data/" + fileName).exists())
             return new Tree();
-        ObjectInputStream stream = new ObjectInputStream(new FileInputStream("data/test.dat"));
+        ObjectInputStream stream = new ObjectInputStream(new FileInputStream("data/" + fileName));
         return (Tree) stream.readObject();
     }
 }
