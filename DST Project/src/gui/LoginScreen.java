@@ -11,9 +11,10 @@ public class LoginScreen extends JPanel implements ActionListener {
     private JTextField idField;
     private JPasswordField passwordField;
     private JButton loginButton;
-    private JFrame parentFrame;
+    private MainFrame parentFrame;
+    private Student st;
 
-    public LoginScreen(JFrame parentFrame) {
+    public LoginScreen(MainFrame parentFrame) {
         this.parentFrame = parentFrame;
         // Create labels
         idField = new JTextField();
@@ -35,41 +36,32 @@ public class LoginScreen extends JPanel implements ActionListener {
     }
 
     private boolean login() {
-       try {
-           Student student = new src.Student(123456, 3.5,"John", "Doe", new java.util.Date(2000, 1, 1), "Computer Science", "Turkish", "123456");
-           int id = Integer.parseInt(idField.getText());
-           String password = new String(passwordField.getPassword());
-           if (id == student.getId() && password.equals(student.getPassword())) {
-               return true;
-
-           } else {
-               return false;
-           }
-         } catch (NumberFormatException e) {
-           JOptionPane.showMessageDialog(this, "Please enter integer for ID field", "Error", JOptionPane.ERROR_MESSAGE);
-              return false;
-       }
+        try {
+            int id = Integer.parseInt(idField.getText());
+            String password = new String(passwordField.getPassword());
+            st = parentFrame.tree.find(id);
+            if (st != null && id == st.getId() && password.equals(st.getPassword())) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter integer for ID field", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == loginButton){
             if(login()){
-                parentFrame.dispose();
                 System.out.println("Login successful");
+                parentFrame.login(this, st);
             }
             else{
                 JOptionPane.showMessageDialog(this, "Invalid ID or password", "Error", JOptionPane.ERROR_MESSAGE);
             }
             // Change current team
         }
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Login Screen");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(200, 200);
-        frame.add(new LoginScreen(frame));
-        frame.setVisible(true);
     }
 }

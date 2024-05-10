@@ -1,9 +1,9 @@
-package src.gui.list;
+package src.gui;
 
 import src.Student;
+import src.gui.list.List;
 import src.gui.list.items.TeammateListItem;
 import src.structures.Team;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -109,7 +109,7 @@ public class TeamsPanel extends JPanel implements ActionListener {
                         rand.teams.add(team);
                         team.add(student);
                     }
-                    ti = Math.clamp(ti, 0, student.teams.getLenght() - 1);
+//                    ti = Math.clamp(ti, 0, student.teams.getLenght() - 1);
 
                     student.teams.get(ti, Team.class).add(rand);
                 }
