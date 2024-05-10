@@ -42,7 +42,7 @@ public class Aziz extends Student{
     Student Bahtiyar= new Student(37, 3.8, "Bahtiyar", "Zaynutdinov", new Date(2001, 1, 1), "Software Engineering", "Kazakhstani", "password");
     Student Shavkat= new Student(38, 4.0, "Shavkat", "Rakhmonov", new Date(2002, 1, 1), "Machine Engineering", "Kazakhstani", "password");
     Student Aisha= new Student(39, 3.0, "Aisha", "Abayeva", new Date(2003, 1, 1), "Computer Engineering", "Kazakhstani", "password");
-    Student Gulmira= new Student(39, 3.4, "Gulmira", "Temirkhanova", new Date(2001, 1, 1), "Industrial Engineering", "Kazakhstani", "password");
+    Student Gulmira= new Student(40, 3.4, "Gulmira", "Temirkhanova", new Date(2001, 1, 1), "Industrial Engineering", "Kazakhstani", "password");
 
 
 
