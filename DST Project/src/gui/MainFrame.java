@@ -2,6 +2,19 @@ package src.gui;
 
 import javax.swing.*;
 
+import src.Student;
+import src.gui.list.List;
+import src.structures.Team;
+import src.structures.linkedList.LinkedList;
+import src.structures.linkedList.Node;
+import src.structures.tree.Tree;
+//import src.structures.tree.Node;
+import src.gui.list.TeamsList;
+import src.gui.LoginScreen;
+import src.structures.tree.StudentTree;
+
+import java.io.IOException;
+
 public class MainFrame extends JFrame {
     StudentTree tree;
     Student mainStudent;
