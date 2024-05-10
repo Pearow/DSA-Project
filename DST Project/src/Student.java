@@ -28,7 +28,7 @@ public class Student implements Serializable, Comparable<Student>, hasID {
         data.add("John");
         data.add("Doe");
         data.add(new Date(2000, 1, 1));
-        data.add("Computer Science");
+        data.add("Computer Engineering");
         data.add("American");
         data.add("password");
     }
@@ -260,11 +260,10 @@ public class Student implements Serializable, Comparable<Student>, hasID {
         return puan;
     }
 
-    //get methodunun duzelmesini bekle
     public static void main(String[] args) {
 
         Student student1 = new Student();
-        Student student2 = new Student(2, 3.0, "Jane", "Doe", new Date(2000, 1, 1), "Computer Science", "American", "password");
+        Student student2 = new Student(2, 3.0, "Jane", "Doe", new Date(2000, 1, 1), "Computer Engineering", "American", "password");
 
         System.out.println(student1.getId());
         System.out.println(student1.getGpa());
@@ -288,6 +287,18 @@ public class Student implements Serializable, Comparable<Student>, hasID {
 
         System.out.println(student2.getId());
 
+        //Test yapilcak ogrenciler burada olusturulacak
+        Student student3 = new Student(3, 3.4, "Kerem", "Serter", new Date(2000, 1, 1), "Software Engineering", "Turkish", "password");
+        Student student4 = new Student(3, 3.6, "Salim", "Ucar", new Date(2000, 1, 1), "Software Engineering", "Turkish", "password");
+        Student student5 = new Student(3, 3.0, "Azizcan", "Tam", new Date(2000, 1, 1), "Software Engineering", "Turkish", "password");
+        Student student6 = new Student(3, 2.2, "Hans", "Flammenwerfer", new Date(2000, 1, 1), "Machine Engineering", "German", "password");
+        Student student7 = new Student(3, 0.7, "Cristiano Ronaldo", "Doe", new Date(2000, 1, 1), "Biomedical Engineering", "Portuguese", "password");
+        Student student8 = new Student(3, 2.8, "Abdulrezzak", "Palestinian", new Date(2000, 1, 1), "Civil Engineering", "Palestinian", "password");
+        Student student9 = new Student(3, 3.3, "Charles", "King", new Date(2000, 1, 1), "Electrical Engineering", "English", "password");
+        Student student10 = new Student(3, 4.0, "Sniper", "TF2", new Date(2000, 1, 1), "Industrial Engineering", "Australian", "password");
+        Student student11 = new Student(3, 3.7, "Fatima", "Lebanese", new Date(2000, 1, 1), "Civil Engineering", "American", "password");
+        Student student12 = new Student(3, 1.7, "Seriz", "Kazakhstani", new Date(2000, 1, 1), "Electrical Engineering", "Kazakhstani", "password");
+        Student student13 = new Student(3, 2.6, "Pele", "King", new Date(2000, 1, 1), "Machine Engineering", "Brazilian", "password");
 
     }
 }

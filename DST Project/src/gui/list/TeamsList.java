@@ -10,10 +10,6 @@ public class TeamsList extends List {
     private final JPanel panel = new JPanel();
 
     public TeamsList(){
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        setViewportView(panel);
-        setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     }
 
     public void add(JComponent item){
@@ -29,7 +25,7 @@ public class TeamsList extends List {
         frame.getContentPane().add(teamListItem, BorderLayout.CENTER);
 
         for(int i = 1; i < 30; i++)
-            teamListItem.add(new TeamListItem(new Team(i)));
+//            teamListItem.add(new TeamListItem(new Team(i)));
 
         frame.setVisible(true);
     }

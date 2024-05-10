@@ -20,7 +20,7 @@ public class TeamsListPopupWindow extends JDialog {
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(100, 17));
 
-        teamsList.add(new TeamListItem(new Team()));
+//        teamsList.add(new TeamListItem(new Team()));
         add(teamsList, BorderLayout.CENTER);
 
         this.setVisible(true);

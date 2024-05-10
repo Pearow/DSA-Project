@@ -7,7 +7,6 @@ import java.util.Date;
 
 import src.Student;
 import src.gui.list.TeamsList;
-import src.structures.Team;
 
 public class AddToTeamPopup extends JDialog implements ActionListener {
 
@@ -19,41 +18,41 @@ public class AddToTeamPopup extends JDialog implements ActionListener {
     private JLabel infoLabelDob;
     private JLabel infoLabelDepartment;
     private JLabel infoLabelNationality;
-    private Student student;
-    private JDialog TeamsListItem;
+    public final Student selectedStudent;
+    private JDialog TeamsListPopupWindow;
 
-    public AddToTeamPopup(JFrame parent, Student student) {
+    public AddToTeamPopup(JFrame parent, Student selectedStudent) {
         super(parent, "Add to Team", true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(300, 220);
         setLocationRelativeTo(parent);
         setLayout(null);
 
-        this.student = student;
+        this.selectedStudent = selectedStudent;
 
         addToTeamButton= new JButton("Add to Team");
         addToTeamButton.setBounds(10, 10, 100, 20);
         add(addToTeamButton);
 
-        infoLabelId = new JLabel("ID: " + student.getId());
+        infoLabelId = new JLabel("ID: " + selectedStudent.getId());
         infoLabelId.setBounds(10, 40, 200, 20);
 
-        infoLabelGpa = new JLabel("GPA: " + student.getGpa());
+        infoLabelGpa = new JLabel("GPA: " + selectedStudent.getGpa());
         infoLabelGpa.setBounds(10, 60, 200, 20);
 
-        infoLabelName = new JLabel("Name: " + student.getName());
+        infoLabelName = new JLabel("Name: " + selectedStudent.getName());
         infoLabelName.setBounds(10, 80, 200, 20);
 
-        infoLabelSurname = new JLabel("Surname: " + student.getSurname());
+        infoLabelSurname = new JLabel("Surname: " + selectedStudent.getSurname());
         infoLabelSurname.setBounds(10, 100, 200, 20);
 
-        infoLabelDob = new JLabel("Date of Birth: " + student.getDob());
+        infoLabelDob = new JLabel("Date of Birth: " + selectedStudent.getDob());
         infoLabelDob.setBounds(10, 120, 200, 20);
 
-        infoLabelDepartment = new JLabel("Department: " + student.getDepartment());
+        infoLabelDepartment = new JLabel("Department: " + selectedStudent.getDepartment());
         infoLabelDepartment.setBounds(10, 140, 200, 20);
 
-        infoLabelNationality = new JLabel("Nationality: " + student.getNationality());
+        infoLabelNationality = new JLabel("Nationality: " + selectedStudent.getNationality());
         infoLabelNationality.setBounds(10, 160, 200, 20);
 
         add(infoLabelId);
@@ -69,11 +68,12 @@ public class AddToTeamPopup extends JDialog implements ActionListener {
 
         setVisible(true);
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addToTeamButton) {
-            TeamsListItem = new TeamsListPopupWindow(new JFrame(), new TeamsList());
-            System.out.println("Add to team button clicked");
+            TeamsListPopupWindow = new TeamsListPopupWindow(new JFrame(), new TeamsList());
+            System.out.println("Adding " + selectedStudent.getName() + " to team ");
             dispose();
         }
     }
