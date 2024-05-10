@@ -18,6 +18,38 @@ public class Team extends LinkedList implements Serializable {
         this.teamId = teamId;
     }
 
+    public boolean exists(Student student){
+        if(getLenght() == 0)
+            return false;
+        boolean exists = false;
+        Node<Student> pointer = root;
+        do{
+            if(pointer.getData() == student){
+                exists = true;
+                break;
+            }
+        }while((pointer = pointer.getNext()) != null);
+        return exists;
+    }
+
+    public Student get(int index) {
+        return super.get(index, Student.class);
+    }
+
+    public boolean remove(Student student) {
+        Node<Student> pointer = root;
+        int i = 0;
+        while(pointer != null){
+            if(pointer.getData() == student){
+                super.remove(i);
+                return true;
+            }
+            i++;
+            pointer = pointer.getNext();
+        }
+        return false;
+    }
+
     public Team(Student student) {
         this();
         this.add(student);
@@ -28,7 +60,8 @@ public class Team extends LinkedList implements Serializable {
     }
 
     public void add(Student student) {
-        super.add(student);
+        if(!exists(student))
+            super.add(student);
     }
 
 }

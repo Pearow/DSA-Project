@@ -17,6 +17,12 @@ public class List extends JScrollPane {
     public void add(JComponent item){
         panel.add(item);
     }
+    public void remove(JComponent item){
+        panel.remove(item);
+    }
+    public void clear(){
+        panel.removeAll();
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Student List");

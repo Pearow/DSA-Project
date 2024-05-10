@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class LinkedList implements Serializable {
-   private Node root;
-   private int lenght;
+   protected Node root;
+   protected int lenght;
 
    public LinkedList() {
       this.root = null;
@@ -47,15 +47,24 @@ public class LinkedList implements Serializable {
         return Tclass.cast(getNode(index).getData());
     }
 
+    public <T> int find(T data) {
+        Node current = root;
+        int index = 0;
+        while (current != null) {
+            if (current.getData() == data) {
+                return index;
+            }
+            current = current.getNext();
+            index++;
+        }
+        return -1;
+    }
+
     public <T> boolean edit(int index, T data){
         getNode(index).setData(data);
         return true;
     }
 
-
-    //TODO: Find the node with specified index and change its data to variable "data". Return true if completed succesfully else rtrn fls
-
-    //TODO: Will be Fixed Later
     public boolean remove(int index) {
      if (root == null) {
          return false;
