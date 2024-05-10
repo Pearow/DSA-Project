@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 
 import src.Student;
+import src.gui.list.TeamsList;
 import src.structures.Team;
-import src.gui.list.items.TeamsList;
 
 public class AddToTeamPopup extends JDialog implements ActionListener {
 
@@ -72,7 +72,7 @@ public class AddToTeamPopup extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addToTeamButton) {
-            TeamsListItem = new TeamsList(new JFrame(), new Team(1));
+            TeamsListItem = new TeamsListPopupWindow(new JFrame(), new TeamsList());
             System.out.println("Add to team button clicked");
             dispose();
         }

@@ -1,16 +1,20 @@
 package src.gui.list;
-import src.gui.list.items.TeammateListItem;
+
+import src.gui.list.items.TeamListItem;
+import src.structures.Team;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class List extends JScrollPane {
+public class TeamsList extends JScrollPane {
     private final JPanel panel = new JPanel();
-    public List(){
+
+    public TeamsList(){
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         setViewportView(panel);
         setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
 
     }
 
@@ -19,13 +23,15 @@ public class List extends JScrollPane {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Student TeamsList");
+        JFrame frame = new JFrame("Teams List");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(200, 500);
-        List studentList = new List();
-        frame.getContentPane().add(studentList, BorderLayout.CENTER);
-        for(int i = 1; i < 100; i++)
-            studentList.add(new TeammateListItem(new src.Student(123456, 3.5,"John" + i, "Doe", new java.util.Date(2000, 1, 1), "Computer Science", "Turkish", "123456")));
+
+        TeamsList teamListItem = new TeamsList();
+        frame.getContentPane().add(teamListItem, BorderLayout.CENTER);
+
+        for(int i = 1; i < 30; i++)
+            teamListItem.add(new TeamListItem(new Team(i)));
 
         frame.setVisible(true);
     }
