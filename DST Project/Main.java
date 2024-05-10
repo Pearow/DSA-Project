@@ -12,37 +12,37 @@ import java.util.Scanner;
 public class Main implements Serializable {
     public static Tree testTree = new Tree();
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        // Create a new student
-//        Student student = new Student();
-//        student.setId(1);
-//        student.setName("John");
-//        student.setSurname("Doe");
-//        student.setGpa(3.5);
-//        student.setDob(new Date(2000, 1, 1));
-//        student.setDepartment("Computer Science");
-//        student.setNationality("American");
-//        student.setPassword("password");
+        // Create a new team
+//        Student team = new Student();
+//        team.setId(1);
+//        team.setName("John");
+//        team.setSurname("Doe");
+//        team.setGpa(3.5);
+//        team.setDob(new Date(2000, 1, 1));
+//        team.setDepartment("Computer Science");
+//        team.setNationality("American");
+//        team.setPassword("password");
 
         // Create a new team
 //        Team team = new Team();
-//        team.addStudent(student);
+//        team.addStudent(team);
 
-//        // Print the student's name
-//        System.out.println("Student's name: " + student.getName());
+//        // Print the team's name
+//        System.out.println("Student's name: " + team.getName());
 //
-//        // Print the student's surname
-//        System.out.println("Student's surname: " + student.getSurname());
+//        // Print the team's surname
+//        System.out.println("Student's surname: " + team.getSurname());
 //
-//        // Print the student's GPA
-//        System.out.println("Student's GPA: " + student.getGpa());
+//        // Print the team's GPA
+//        System.out.println("Student's GPA: " + team.getGpa());
 //
-//        // Print the student's date of birth
-//        System.out.println("Student's date of birth: " + student.getDob());
+//        // Print the team's date of birth
+//        System.out.println("Student's date of birth: " + team.getDob());
 //
-//        // Print the student's department
-//        System.out.println("Student's department: " + student.getDepartment());
+//        // Print the team's department
+//        System.out.println("Student's department: " + team.getDepartment());
 //
-//        // Print the student
+//        // Print the team
         testInterface();
     }
 
@@ -51,7 +51,7 @@ public class Main implements Serializable {
         System.out.println("Running test1_addStudents");
         for (int i = 0; i < 25; i++) {
            testTree.add(new Student(i, random.nextDouble(4), "Student" + i, "Surname" + i, new Date(2000, 1, 1), "Computer Science", "American", "password"));
-           System.out.println("Added student " + i + " to the tree");
+           System.out.println("Added team " + i + " to the tree");
         }
         System.out.println("Running test2");
         System.out.println(testTree.inOrder());
@@ -66,7 +66,7 @@ public class Main implements Serializable {
 
     public static void test4_removeStudent() throws IOException, ClassNotFoundException {
         System.out.println("Running test4_removeStudent");
-        System.out.println("Type the id of the student you want to remove:");
+        System.out.println("Type the id of the team you want to remove:");
         Scanner scanner = new Scanner(System.in);
         int id = scanner.nextInt();
         testTree.remove(id);

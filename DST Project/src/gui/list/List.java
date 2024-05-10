@@ -1,4 +1,5 @@
 package src.gui.list;
+import src.Student;
 import src.gui.list.items.TeammateListItem;
 
 import javax.swing.*;
@@ -6,13 +7,17 @@ import java.awt.*;
 
 public class List extends JScrollPane {
     private final JPanel panel = new JPanel();
+
     public List(){
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         setViewportView(panel);
         setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
     }
+
+//    public Student selectedStudent(){
+//        return new Student(123456, 3.5,"John", "Doe", new java.util.Date(2000, 1, 1), "Computer Science", "Turkish", "123456");
+//    }
 
     public void add(JComponent item){
         panel.add(item);
@@ -25,7 +30,7 @@ public class List extends JScrollPane {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Student List");
+        JFrame frame = new JFrame("Student TeamsList");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(200, 500);
         List studentList = new List();

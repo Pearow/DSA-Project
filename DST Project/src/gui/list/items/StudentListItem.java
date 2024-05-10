@@ -30,7 +30,7 @@ public class StudentListItem extends JPanel{
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Student List Item");
+        JFrame frame = new JFrame("Student TeamsList Item");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(200, 41 + new StudentListItem(new Student()).getPreferredSize().height);
         frame.add(new StudentListItem(new Student(123456, 3.5,"John", "Doe", new Date(2000, 1, 1), "Computer Science", "Turkish", "123456")));
