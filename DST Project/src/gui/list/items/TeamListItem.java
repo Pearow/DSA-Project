@@ -1,5 +1,6 @@
 package src.gui.list.items;
 
+import src.gui.list.TeamsList;
 import src.structures.Team;
 
 import javax.swing.*;
@@ -32,6 +33,7 @@ public class TeamListItem extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("+")) {
+            //team.add(TeamsList.selectedStudent);
             System.out.println("Add to team");
         }
     }
