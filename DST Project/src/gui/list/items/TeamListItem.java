@@ -2,6 +2,8 @@ package src.gui.list.items;
 
 import src.gui.list.TeamsList;
 import src.structures.Team;
+import src.Student;
+import src.gui.list.List;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -33,8 +35,8 @@ public class TeamListItem extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("+")) {
-            //team.add(TeamsList.selectedStudent);
-            System.out.println("Add to team");
+//            team.add(List.selectedStudent());
+//            System.out.println("Added " + List.selectedStudent + "to team " + team.getId());
         }
     }
 

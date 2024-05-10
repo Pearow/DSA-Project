@@ -6,7 +6,7 @@ import src.structures.Team;
 import javax.swing.*;
 import java.awt.*;
 
-public class TeamsList extends JScrollPane {
+public class TeamsList extends List {
     private final JPanel panel = new JPanel();
 
     public TeamsList(){

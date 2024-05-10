@@ -15,6 +15,10 @@ public class List extends JScrollPane {
         setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
     }
 
+//    public Student selectedStudent(){
+//        return new Student(123456, 3.5,"John", "Doe", new java.util.Date(2000, 1, 1), "Computer Science", "Turkish", "123456");
+//    }
+
     public void add(JComponent item){
         panel.add(item);
     }
