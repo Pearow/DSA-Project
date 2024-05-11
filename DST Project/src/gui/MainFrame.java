@@ -21,7 +21,7 @@ public class MainFrame extends JFrame {
         loadFromFiles(0);
 
         //Set up frame
-        setTitle("Teammate Recommendation and Building app");
+        setTitle("Teammate Recommendation App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500, 360);
         setResizable(false);
