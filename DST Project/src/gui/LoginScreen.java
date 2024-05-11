@@ -22,12 +22,17 @@ public class LoginScreen extends JPanel implements ActionListener {
         passwordField = new JPasswordField();
         loginButton = new JButton("Login");
 
+        idField.setMaximumSize(new Dimension(500, 20));
+        passwordField.setMaximumSize(new Dimension(500, 20));
+
         // Set layout
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new GridLayout(3,2));
         setPreferredSize(new Dimension(200, 200));
 
         // Add fields
+        add(new JLabel("ID:"));
         add(idField);
+        add(new JLabel("Password:"));
         add(passwordField);
 
         // Add button to change current team

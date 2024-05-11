@@ -6,8 +6,8 @@ import src.gui.list.items.StudentListItem;
 import src.structures.tree.StudentTree;
 
 import javax.swing.*;
-import java.awt.event.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.io.IOException;
 
 public class MainFrame extends JFrame {
