@@ -6,6 +6,7 @@ import src.gui.list.items.StudentListItem;
 import src.structures.tree.StudentTree;
 
 import javax.swing.*;
+import java.awt.event.*;
 import java.io.IOException;
 
 public class MainFrame extends JFrame {
@@ -13,7 +14,7 @@ public class MainFrame extends JFrame {
     public Student mainStudent;
     public TeamsPanel teamsPanel;
 
-    public MainFrame() {
+    public MainFrame(){
         try {
             tree = StudentTree.fromFile("database.dat");
         } catch (IOException | ClassNotFoundException e) {
@@ -30,6 +31,21 @@ public class MainFrame extends JFrame {
         LoginScreen loginScreen = new LoginScreen(this);
         add(loginScreen);
         pack();
+
+        //Add listeners
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.out.println("Saving database");
+                super.windowClosing(e);
+                try {
+                    tree.toFile("database.dat");
+                    System.out.println("Successfully saved database");
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -71,5 +87,4 @@ public class MainFrame extends JFrame {
         add(studentList);
         pack();
     }
-
 }
