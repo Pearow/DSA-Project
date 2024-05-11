@@ -4,7 +4,7 @@ import src.Student;
 import src.structures.linkedList.LinkedList;
 import src.structures.linkedList.Node;
 
-import java.io.Serializable;
+import java.io.*;
 
 public class Team extends LinkedList implements Serializable {
     private static int teamsCount = 0;
@@ -70,6 +70,25 @@ public class Team extends LinkedList implements Serializable {
         if (student.findTeam(teamId) == null)
             student.teams.add(this);
         else System.out.println("Student is already in the team");
+    }
+
+    public static void saveTeamCount() {
+        try{
+            FileOutputStream fileOut = new FileOutputStream("data\\teamCount.dat");
+            fileOut.write(teamsCount);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void loadTeamCount() {
+        try {
+            File file = new File("data\\teamCount.dat");
+            if (file.exists())
+                teamsCount = new FileInputStream(file).read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

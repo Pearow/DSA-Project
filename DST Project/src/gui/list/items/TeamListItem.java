@@ -36,33 +36,11 @@ public class TeamListItem extends JPanel implements ActionListener {
         add(teamID, BorderLayout.WEST);
         add(addToSelectedTeam, BorderLayout.EAST);
     }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Team list item");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(200, 200);
-        Student oldStudent = new Student(123456, 3.5, "John", "Doe", new Date(2000, 1, 1), "Computer Warrior", "Turkish", "123456");
-        Student newStudent = new Student(2, 1.0, "Jane", "Doe", new Date(2000, 1, 1), "Social Justice", "American", "password");
-        Team team = new Team();
-        team.add(oldStudent);
-        oldStudent.teams.add(team);
-
-        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-
-//        frame.getContentPane().add(new TeamListItem(team, newStudent));
-
-        frame.setVisible(true);
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("+")) {
             team.add(selectedStudent);
             System.out.println("Added " + selectedStudent.getName() + " to team " + team.getId());
-            //Debug
-            for (int i = 0; i < team.getLenght(); i++) {
-                System.out.println(team.get(i));
-            }
 
             teamsListPopupWindow.dispose();
         }

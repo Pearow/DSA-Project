@@ -9,8 +9,6 @@ public class Tree<Student extends hasID> implements Serializable {
     private Node root;
 
     public static Tree fromFile(String fileName) throws IOException, ClassNotFoundException {
-        if (!new File("data/" + fileName).exists())
-            return new Tree();
         ObjectInputStream stream = new ObjectInputStream(new FileInputStream("data/" + fileName));
         return (Tree) stream.readObject();
     }
@@ -23,6 +21,7 @@ public class Tree<Student extends hasID> implements Serializable {
             root = newNode;
     }
 
+    // Thanks to GeeksForGeeks for the rotation methods
     private Node add(Node pointer, Node parent, Node newNode) {
         if (pointer == null) {
             newNode.setParent(parent);

@@ -59,46 +59,6 @@ public class TeamsPanel extends JPanel implements ActionListener {
         add(leaveTeam);
     }
 
-    public static void main(String[] args) {
-        Student[] students = new Student[10];
-        java.util.Random random = new java.util.Random();
-        for (int i = 0; i < 10; i++) {
-            students[i] = new Student(random.nextInt(1900000, 2399999), random.nextDouble(4), "John" + i, "Student", new Date(random.nextInt(2000, 2009)), "Computer Science", "Turkish", "123456");
-        }
-        for (Student student : students) {
-            for (int i = 0; i < 12; i++) {
-                Student rand = students[random.nextInt(10)];
-                if (rand != student) {
-                    int ti = random.nextInt(3);
-                    if (student.teams.getLenght() < ti || student.teams.getLenght() == 0) {
-                        Team team = new Team();
-                        student.teams.add(team);
-                        rand.teams.add(team);
-                        team.add(student);
-                    }
-//                    ti = Math.clamp(ti, 0, student.teams.getLenght() - 1);
-
-                    student.teams.get(ti, Team.class).add(rand);
-                }
-            }
-        }
-
-        JFrame frame = new JFrame("Teams Panel John 0");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 200);
-
-        TeamsPanel teamsPanel = new TeamsPanel(students[0]);
-        frame.add(teamsPanel);
-        frame.setVisible(true);
-        JFrame frame2 = new JFrame("Teams Panel John 1");
-        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame2.setSize(400, 200);
-
-        TeamsPanel teamsPanel2 = new TeamsPanel(students[1]);
-        frame2.add(teamsPanel2);
-        frame2.setVisible(true);
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == teamsCombo && teamsCombo.getSelectedIndex() != -1) {
@@ -110,7 +70,6 @@ public class TeamsPanel extends JPanel implements ActionListener {
                 //Add teammates
                 for (int i = 0; i < selectedTeam.getLenght(); i++) {
                     teammateList.add(new TeammateListItem(selectedTeam.get(i)));
-//                    System.out.println(selectedTeam.get(i));
                 }
 
                 teammateList.revalidate();
