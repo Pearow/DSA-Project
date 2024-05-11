@@ -7,13 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TeamsList extends List {
-    private final JPanel panel = new JPanel();
 
     public TeamsList(){
-    }
-
-    public void add(JComponent item){
-        panel.add(item);
     }
 
     public static void main(String[] args) {
@@ -25,7 +20,7 @@ public class TeamsList extends List {
         frame.getContentPane().add(teamListItem, BorderLayout.CENTER);
 
         for(int i = 1; i < 30; i++)
-//            teamListItem.add(new TeamListItem(new Team(i)));
+//            teamListItem.add(new TeamListItem(new Team(), ));
 
         frame.setVisible(true);
     }

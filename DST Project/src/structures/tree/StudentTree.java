@@ -3,10 +3,7 @@ package src.structures.tree;
 import src.Student;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
+import java.util.*;
 
 public class StudentTree extends Tree<Student> {
     public static StudentTree fromFile(String filename) throws IOException, ClassNotFoundException {
@@ -44,14 +41,14 @@ public class StudentTree extends Tree<Student> {
     public static void main(String[] args) throws IOException, ClassNotFoundException{
         {
             Student[] students ={
-                new Student(1, 3.4, "Kerem", "Serter", new Date(2000, 4, 21), "Software Engineering", "Turkish", "password"),
-                new Student(2, 3.6, "Salim", "Uçar", new Date(2003, 6, 26), "Software Engineering", "Turkish", "password"),
-                new Student(3, 3.0, "Azizcan", "Tam", new Date(2003, 1, 1), "Software Engineering", "Turkish", "password"),
-                new Student(4, 2.2, "Büşra", "Saygılı", new Date(2001, 3, 12), "Industrial Engineering", "Turkish", "password"),
-                new Student(5, 2.6, "Hamit", "Hamdioğlu", new Date(2002, 12, 8), "Machine Engineering", "Turkish", "password"),
-                new Student(6, 2.6, "Sude", "Atak", new Date(2000, 7, 28), "Computer Engineering", "Turkish", "password"),
-                new Student(7, 0.7, "Klaus", "Schmidt", new Date(2002, 11, 11), "Biomedical Engineering", "German", "password"),
-                new Student(8, 3.2, "Emma", "Müller", new Date(2002, 5, 18), "Biomedical Engineering", "German", "password"),
+                new Student(1, 3.4, "Kerem", "Serter", new Date(2000, 3, 21), "Software Engineering", "Turkish", "a"),
+                new Student(2, 3.6, "Salim", "Uçar", new Date(2003, 5, 26), "Software Engineering", "Turkish", "b"),
+                new Student(3, 3.0, "Azizcan", "Tam", new Date(2003, 0, 1), "Software Engineering", "Turkish", "password"),
+                new Student(4, 2.2, "Büşra", "Saygılı", new Date(2001, 2, 12), "Industrial Engineering", "Turkish", "password"),
+                new Student(5, 2.6, "Hamit", "Hamdioğlu", new Date(2002, 11, 8), "Machine Engineering", "Turkish", "password"),
+                new Student(6, 2.6, "Sude", "Atak", new Date(2000, 6, 28), "Computer Engineering", "Turkish", "password"),
+                new Student(7, 0.7, "Klaus", "Schmidt", new Date(2002, 10, 11), "Biomedical Engineering", "German", "password"),
+                new Student(8, 3.2, "Emma", "Müller", new Date(2002, 4, 18), "Biomedical Engineering", "German", "password"),
                 new Student(9, 2.5, "Carl ", "Fischer", new Date(2004, 10, 9), "Computer Engineering", "German", "password"),
                 new Student(10, 2.8, "Abdulrezzak", "Awad", new Date(2000, 1, 26), "Electrical Engineering", "Palestinian", "password"),
                 new Student(11, 2.1, "Muhammed", "Saleh", new Date(2002, 8, 11), "Civil Engineering", "Palestinian", "password"),
@@ -85,10 +82,11 @@ public class StudentTree extends Tree<Student> {
                 new Student(39, 3.0, "Aisha", "Abayeva", new Date(2003, 2, 31), "Computer Engineering", "Kazakhstani", "password"),
                 new Student(40, 3.4, "Gulmira", "Temirkhanova", new Date(2001, 0, 1), "Industrial Engineering", "Kazakhstani", "password")
             };
-            StudentTree tree = StudentTree.fromFile("database.dat");
-            for(Student student: tree.toArray()){
-                System.out.println(student);
+            StudentTree tree = new StudentTree();
+            for(Student student : students){
+                tree.add(student);
             }
+            tree.toFile("database.dat");
         }
     }
 

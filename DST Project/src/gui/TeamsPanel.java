@@ -44,9 +44,7 @@ public class TeamsPanel extends JPanel implements ActionListener {
         teamsCombo.setPreferredSize(new Dimension(175, 20));
 
         //Add teams
-        for (int i = 0; i < student.teams.getLenght(); i++) {
-            teamsCombo.addItem("Team " + student.teams.get(i, Team.class).teamId);
-        }
+        loadTeams();
 
         //Add components
         titlePanel.add(title, BorderLayout.NORTH);
@@ -70,13 +68,16 @@ public class TeamsPanel extends JPanel implements ActionListener {
                 //Add teammates
                 for (int i = 0; i < selectedTeam.getLenght(); i++) {
                     teammateList.add(new TeammateListItem(selectedTeam.get(i)));
-                    System.out.println(selectedTeam.get(i));
+//                    System.out.println(selectedTeam.get(i));
                 }
 
                 teammateList.revalidate();
             }
 
         } else if (e.getSource() == leaveTeam){
+            if(teamsCombo.getSelectedIndex() == -1){
+                return;
+            }
             int selectedTeamIndex = Integer.parseInt(teamsCombo.getSelectedItem().toString().substring(5));
             Team selectedTeam = student.teams.get(selectedTeamIndex, Team.class);
 
@@ -85,10 +86,16 @@ public class TeamsPanel extends JPanel implements ActionListener {
             student.teams.remove(student.teams.find(selectedTeam));
 
             teamsCombo.removeAllItems();
+
             //Add teams
-            for (int i = 0; i < student.teams.getLenght(); i++) {
-                teamsCombo.addItem("Team " + student.teams.get(i, Team.class).teamId);
-            }
+            loadTeams();
+        }
+    }
+
+    public void loadTeams(){
+        teamsCombo.removeAllItems();
+        for (int i = 0; i < student.teams.getLenght(); i++) {
+            teamsCombo.addItem("Team " + student.teams.get(i, Team.class).teamId);
         }
     }
 

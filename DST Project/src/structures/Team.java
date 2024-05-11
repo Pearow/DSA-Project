@@ -64,8 +64,12 @@ public class Team extends LinkedList implements Serializable {
     }
 
     public void add(Student student) {
-        if(!exists(student))
-            super.add(student);
+        if(exists(student))
+            return;
+        super.add(student);
+        if(student.findTeam(teamId) == null)
+            student.teams.add(this);
+        else System.out.println("Student is already in the team");
     }
 
 }

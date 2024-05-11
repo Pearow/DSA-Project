@@ -1,5 +1,6 @@
 package src.gui.list.items;
 
+import src.gui.TeamsListPopupWindow;
 import src.structures.Team;
 import src.Student;
 import src.gui.AddToTeamPopup;
@@ -14,11 +15,13 @@ import java.util.Date;
 public class TeamListItem extends JPanel implements ActionListener {
     public final Team team;
     public Student selectedStudent;
+    private final TeamsListPopupWindow teamsListPopupWindow;
 
-     public TeamListItem(Team team, Student selectedStudent){
+     public TeamListItem(Team team, Student selectedStudent, TeamsListPopupWindow teamsListPopupWindow){
 
          this.selectedStudent = selectedStudent;
          this.team = team;
+            this.teamsListPopupWindow = teamsListPopupWindow;
          JLabel teamID = new JLabel(String.valueOf(this.team.getId()));
          JButton addToSelectedTeam = new JButton("+");
 
@@ -44,6 +47,8 @@ public class TeamListItem extends JPanel implements ActionListener {
             for(int i = 0; i < team.getLenght(); i++){
                 System.out.println(team.get(i));
             }
+
+            teamsListPopupWindow.dispose();
        }
     }
 
@@ -59,7 +64,7 @@ public class TeamListItem extends JPanel implements ActionListener {
 
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        frame.getContentPane().add(new TeamListItem(team, newStudent));
+//        frame.getContentPane().add(new TeamListItem(team, newStudent));
 
         frame.setVisible(true);
     }

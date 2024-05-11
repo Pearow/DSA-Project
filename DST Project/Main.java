@@ -55,7 +55,7 @@ public class Main implements Serializable {
         }
         System.out.println("Running test2");
         System.out.println(testTree.inOrder());
-        testTree.toFile();
+//        testTree.toFile();
     }
 
     public static void test3_printStudentsFromDisk() throws IOException, ClassNotFoundException {
@@ -72,7 +72,7 @@ public class Main implements Serializable {
         testTree.remove(id);
         System.out.println("Student with id " + id + " removed");
         System.out.println(testTree.inOrder());
-        testTree.toFile();
+//        testTree.toFile();
     }
 
     public static void test5_orderByGPA(){
