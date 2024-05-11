@@ -4,7 +4,6 @@ import src.Student;
 import src.gui.list.List;
 import src.gui.list.items.TeamListItem;
 import src.structures.Team;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -67,14 +66,6 @@ public class AddToTeamPopup extends JDialog implements ActionListener {
         addToTeamButton.addActionListener(this);
 
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Add to Team Popup");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
-//        new AddToTeamPopup(frame, new Student(123456, 3.5,"John", "Doe", new Date(2000, 1, 1), "Computer Science", "Turkish", "123456"));
-        frame.setLayout(null);
     }
 
     @Override

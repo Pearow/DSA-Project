@@ -13,16 +13,6 @@ public class LinkedList implements Serializable {
         this.root = null;
     }
 
-    public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList();
-        linkedList.add(1);
-        linkedList.add(2);
-        linkedList.add(3);
-        linkedList.remove(1);
-        for (String a : linkedList.getArray())
-            System.out.println(a);
-    }
-
     public <T> void add(T data) {
         Node<T> newNode = new Node<>(data);
         if (root == null) {

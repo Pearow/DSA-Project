@@ -23,17 +23,4 @@ public class TeamsListPopupWindow extends JDialog {
         add(teamsList, BorderLayout.CENTER);
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Teams list popup window");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(200, 500);
-        List teamsList = new List();
-        Team team = new Team();
-        Student student = new Student(123, 3.5, "John", "Doe", new Date(), "Computer Science", "Turkish", "123456");
-        team.add(student);
-//        teamsList.add(new TeamListItem(team, student));
-        TeamsListPopupWindow teamsPopupWindow = new TeamsListPopupWindow(frame, teamsList);
-
-    }
-
 }
