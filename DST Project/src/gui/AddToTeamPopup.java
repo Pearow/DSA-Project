@@ -6,6 +6,7 @@ import src.gui.list.items.TeamListItem;
 import src.structures.Team;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -91,7 +92,7 @@ public class AddToTeamPopup extends JDialog implements ActionListener {
                     teamsList.add(new TeamListItem(parent.mainStudent.teams.get(i, Team.class), selectedStudent, teamsListPopupWindow));
                 }
                 JButton teamButton = new JButton("Create New Team");
-                teamsList.add(teamButton);
+                teamsListPopupWindow.add(teamButton, BorderLayout.SOUTH);
 
                 teamButton.addActionListener(event -> {
                     Team newTeam = new Team();

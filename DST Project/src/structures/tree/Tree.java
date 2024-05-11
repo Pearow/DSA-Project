@@ -5,7 +5,6 @@ import src.structures.hasID;
 import java.io.*;
 import java.util.ArrayList;
 
-//TODO: Change recursive to loop
 public class Tree<Student extends hasID> implements Serializable {
     private Node root;
 
@@ -111,7 +110,6 @@ public class Tree<Student extends hasID> implements Serializable {
         return true;
     }
 
-    //TODO: Fix root cant be deleted
     private Node delete(Node pointer, Node node) {
         if (node == null)
             return null;
