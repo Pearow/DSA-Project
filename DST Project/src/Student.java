@@ -122,6 +122,7 @@ public class Student implements Serializable, Comparable<Student>, hasID {
             if (currentTeam.teamId == id){
                 return currentTeam;
             }
+            current = current.getNext();
         }
         return null;
     }

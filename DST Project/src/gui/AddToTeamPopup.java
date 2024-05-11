@@ -80,11 +80,21 @@ public class AddToTeamPopup extends JDialog implements ActionListener {
             }else {
                 List teamsList = new List();
                 teamsListPopupWindow = new TeamsListPopupWindow(parent, teamsList);
-                System.out.println("Tebrikler Başardınız 👌");
                 // Add teams
                 for (int i = 0; i < parent.mainStudent.teams.getLenght(); i++) {
                     teamsList.add(new TeamListItem(parent.mainStudent.teams.get(i, Team.class), selectedStudent, teamsListPopupWindow));
                 }
+                JButton teamButton = new JButton("Create New Team");
+                teamsList.add(teamButton);
+
+                teamButton.addActionListener(event -> {
+                    Team newTeam = new Team();
+                    newTeam.add(parent.mainStudent);
+                    newTeam.add(selectedStudent);
+                    parent.teamsPanel.loadTeams();
+                    teamsListPopupWindow.dispose();
+                });
+
                 teamsListPopupWindow.setVisible(true);
             }
 

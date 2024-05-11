@@ -22,6 +22,6 @@ public class TeamsList extends List {
         for(int i = 1; i < 30; i++)
 //            teamListItem.add(new TeamListItem(new Team(), ));
 
-        frame.setVisible(true);
+            frame.setVisible(true);
     }
 }
