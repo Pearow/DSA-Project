@@ -32,12 +32,4 @@ public class CurrentStudentPanel extends JPanel {
         currentStudentInfoPanel.add(currentStudentId);
         add(currentStudentInfoPanel);
     }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Current Student Panel");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(200, 200);
-        frame.add(new CurrentStudentPanel(new Student(123456, 3.5, "John", "Doe", new java.util.Date(2000, 1, 1), "Computer Science", "Turkish", "123456")));
-        frame.setVisible(true);
-    }
 }
