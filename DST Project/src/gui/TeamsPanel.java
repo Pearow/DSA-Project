@@ -50,6 +50,7 @@ public class TeamsPanel extends JPanel implements ActionListener {
         //Add components
         titlePanel.add(title, BorderLayout.NORTH);
         comboPanel.add(new JLabel("Viewing"), BorderLayout.WEST);
+        comboPanel.setPreferredSize(new Dimension(300, 20));
         comboPanel.add(teamsCombo, BorderLayout.EAST);
         listPanel.add(teammateList);
         add(titlePanel);
