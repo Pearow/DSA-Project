@@ -6,6 +6,7 @@ import src.gui.list.items.StudentListItem;
 import src.structures.tree.StudentTree;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
@@ -13,6 +14,7 @@ public class MainFrame extends JFrame {
     public StudentTree tree;
     public Student mainStudent;
     public TeamsPanel teamsPanel;
+    private final GridBagConstraints c = new GridBagConstraints();
 
     public MainFrame(){
         try {
@@ -23,10 +25,12 @@ public class MainFrame extends JFrame {
         }
 
         //Set up frame
+        setTitle("Teammate Recommendation and Building app");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1240, 740);
+        setSize(500, 360);
+        setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+        setLayout(new GridBagLayout());
 
         LoginScreen loginScreen = new LoginScreen(this);
         add(loginScreen);
@@ -55,6 +59,9 @@ public class MainFrame extends JFrame {
     }
 
     public void login(LoginScreen screen, Student student) {
+        c.fill = GridBagConstraints.BOTH;
+
+
         remove(screen);
         mainStudent = student;
         CurrentStudentPanel currentStudentPanel = new CurrentStudentPanel(student);
@@ -82,9 +89,26 @@ public class MainFrame extends JFrame {
         }
 
         //Add
-        add(currentStudentPanel);
-        add(teamsPanel);
-        add(studentList);
-        pack();
+        c.gridx = 0;
+        c.gridy = 0;
+        c.ipadx = 10;
+        c.ipady = 10;
+        c.weightx = 1;
+        c.weighty = 1;
+        add(currentStudentPanel, c);
+
+        c.gridx = 0;
+        c.gridy = 1;
+        add(teamsPanel, c);
+
+        c.gridx = 1;
+        c.gridy = 0;
+        c.gridheight = 2;
+        c.weightx = 3.5;
+        c.weighty = 3;
+        add(studentList, c);
+        repaint();
+        revalidate();
     }
+
 }
