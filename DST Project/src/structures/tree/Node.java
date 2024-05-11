@@ -1,9 +1,11 @@
 package src.structures.tree;
+
 import src.structures.hasID;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Node <Student extends hasID> implements Serializable, Comparable<Node> {
+public class Node<Student extends hasID> implements Serializable, Comparable<Node> {
     private Student data;
     private Node left;
     private Node right;
@@ -33,7 +35,7 @@ public class Node <Student extends hasID> implements Serializable, Comparable<No
 
     public void setData(Student data) {
         this.data = data;
-         this.id = data.getId();
+        this.id = data.getId();
     }
 
     public Node getLeft() {

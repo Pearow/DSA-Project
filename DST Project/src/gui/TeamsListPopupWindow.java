@@ -8,12 +8,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Date;
 
-import src.gui.list.TeamsList;
-import src.gui.list.items.TeamListItem;
-
 public class TeamsListPopupWindow extends JDialog {
 
-    public TeamsListPopupWindow(JFrame parent, List teamsList){
+    public TeamsListPopupWindow(JFrame parent, List teamsList) {
         super(parent, "Team", true);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setSize(300, 200);

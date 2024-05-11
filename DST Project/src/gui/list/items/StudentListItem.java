@@ -3,20 +3,16 @@ package src.gui.list.items;
 import src.Student;
 import src.gui.AddToTeamPopup;
 import src.gui.MainFrame;
-import src.gui.list.TeamsList;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Date;
 
-public class StudentListItem extends JPanel{
+public class StudentListItem extends JPanel {
     private static boolean cool = true;
     public final Student student;
 
-    public StudentListItem(Student student, MainFrame mainFrame){
+    public StudentListItem(Student student, MainFrame mainFrame) {
         this.student = student;
         //Set up components
         JLabel studentName = new JLabel(student.getName() + " " + student.getSurname());

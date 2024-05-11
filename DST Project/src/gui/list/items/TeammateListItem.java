@@ -10,7 +10,7 @@ import java.util.Date;
 public class TeammateListItem extends JPanel {
     public final Student student;
 
-    public TeammateListItem(Student student){
+    public TeammateListItem(Student student) {
         this.student = student;
         //Set up components
         JLabel studentName = new JLabel(student.getName() + " " + student.getSurname());
@@ -34,7 +34,7 @@ public class TeammateListItem extends JPanel {
         JFrame frame = new JFrame("Student TeamsList Item");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(200, 41 + new TeammateListItem(new Student()).getPreferredSize().height);
-        frame.add(new TeammateListItem(new Student(123456, 3.5,"John", "Doe", new Date(2000, 1, 1), "Computer Science", "Turkish", "123456")));
+        frame.add(new TeammateListItem(new Student(123456, 3.5, "John", "Doe", new Date(2000, 1, 1), "Computer Science", "Turkish", "123456")));
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
         frame.setVisible(true);
     }

@@ -1,22 +1,20 @@
 package src.gui;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Date;
-
 import src.Student;
 import src.gui.list.List;
-import src.gui.list.TeamsList;
 import src.gui.list.items.TeamListItem;
 import src.structures.Team;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class AddToTeamPopup extends JDialog implements ActionListener {
 
-    private final JButton addToTeamButton;
     public final Student selectedStudent;
-    private TeamsListPopupWindow teamsListPopupWindow;
+    private final JButton addToTeamButton;
     protected MainFrame parent;
+    private TeamsListPopupWindow teamsListPopupWindow;
 
 
     public AddToTeamPopup(MainFrame parent, Student selectedStudent) {
@@ -31,7 +29,7 @@ public class AddToTeamPopup extends JDialog implements ActionListener {
 
         this.selectedStudent = selectedStudent;
 
-        addToTeamButton= new JButton("Add to Team");
+        addToTeamButton = new JButton("Add to Team");
         addToTeamButton.setBounds(10, 10, 100, 20);
         add(addToTeamButton);
 
@@ -70,14 +68,22 @@ public class AddToTeamPopup extends JDialog implements ActionListener {
         setVisible(true);
     }
 
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Add to Team Popup");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(300, 200);
+//        new AddToTeamPopup(frame, new Student(123456, 3.5,"John", "Doe", new Date(2000, 1, 1), "Computer Science", "Turkish", "123456"));
+        frame.setLayout(null);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == addToTeamButton) {
-            if(parent.mainStudent.teams.getLenght() == 0){
+            if (parent.mainStudent.teams.getLenght() == 0) {
                 Team newTeam = new Team();
                 newTeam.add(parent.mainStudent);
                 newTeam.add(selectedStudent);
-            }else {
+            } else {
                 List teamsList = new List();
                 teamsListPopupWindow = new TeamsListPopupWindow(parent, teamsList);
                 // Add teams
@@ -102,13 +108,5 @@ public class AddToTeamPopup extends JDialog implements ActionListener {
             parent.teamsPanel.loadTeams();
             dispose();
         }
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Add to Team Popup");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
-//        new AddToTeamPopup(frame, new Student(123456, 3.5,"John", "Doe", new Date(2000, 1, 1), "Computer Science", "Turkish", "123456"));
-        frame.setLayout(null);
     }
 }

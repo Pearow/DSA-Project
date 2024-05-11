@@ -1,10 +1,11 @@
 package src.gui;
 
+import src.Student;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import src.Student;
 
 public class LoginScreen extends JPanel implements ActionListener {
 
@@ -53,12 +54,11 @@ public class LoginScreen extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == loginButton){
-            if(login()){
+        if (e.getSource() == loginButton) {
+            if (login()) {
                 System.out.println("Login successful");
                 parentFrame.login(this, st);
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Invalid ID or password", "Error", JOptionPane.ERROR_MESSAGE);
             }
             // Change current team

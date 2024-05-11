@@ -1,7 +1,5 @@
 package src.structures.linkedList;
 
-import src.Student;
-
 import java.io.Serializable;
 
 public class Node<T> implements Serializable {

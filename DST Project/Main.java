@@ -1,16 +1,16 @@
-import java.io.IOException;
-import java.util.Date;
 import src.Student;
 import src.structures.tree.Tree;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 
 
-
 public class Main implements Serializable {
     public static Tree testTree = new Tree();
+
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         // Create a new team
 //        Student team = new Student();
@@ -46,12 +46,12 @@ public class Main implements Serializable {
         testInterface();
     }
 
-    public static void test1_addStudents() throws IOException, ClassNotFoundException{
+    public static void test1_addStudents() throws IOException, ClassNotFoundException {
         Random random = new Random();
         System.out.println("Running test1_addStudents");
         for (int i = 0; i < 25; i++) {
-           testTree.add(new Student(i, random.nextDouble(4), "Student" + i, "Surname" + i, new Date(2000, 1, 1), "Computer Science", "American", "password"));
-           System.out.println("Added team " + i + " to the tree");
+            testTree.add(new Student(i, random.nextDouble(4), "Student" + i, "Surname" + i, new Date(2000, 1, 1), "Computer Science", "American", "password"));
+            System.out.println("Added team " + i + " to the tree");
         }
         System.out.println("Running test2");
         System.out.println(testTree.inOrder());
@@ -75,15 +75,15 @@ public class Main implements Serializable {
 //        testTree.toFile();
     }
 
-    public static void test5_orderByGPA(){
+    public static void test5_orderByGPA() {
         System.out.println("Running test5_orderByGPA");
     }
 
-    public static void test6_10StudentsByGPA(){
+    public static void test6_10StudentsByGPA() {
         System.out.println("Running test6_10StudentsByGPA");
     }
 
-    public static void testInterface() throws IOException, ClassNotFoundException{
+    public static void testInterface() throws IOException, ClassNotFoundException {
         System.out.println("Select test case or type 0 to exit:");
         System.out.println("1");
         System.out.println("2");

@@ -4,6 +4,7 @@ import src.Student;
 import src.gui.list.List;
 import src.gui.list.items.TeammateListItem;
 import src.structures.Team;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -57,56 +58,14 @@ public class TeamsPanel extends JPanel implements ActionListener {
         add(leaveTeam);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == teamsCombo && teamsCombo.getSelectedIndex() != -1) {
-            teammateList.clear();
-
-            if (student.teams.getLenght() > 0) {
-                Team selectedTeam = student.teams.get(teamsCombo.getSelectedIndex(), Team.class);
-
-                //Add teammates
-                for (int i = 0; i < selectedTeam.getLenght(); i++) {
-                    teammateList.add(new TeammateListItem(selectedTeam.get(i)));
-//                    System.out.println(selectedTeam.get(i));
-                }
-
-                teammateList.revalidate();
-            }
-
-        } else if (e.getSource() == leaveTeam){
-            if(teamsCombo.getSelectedIndex() == -1){
-                return;
-            }
-            int selectedTeamIndex = Integer.parseInt(teamsCombo.getSelectedItem().toString().substring(5));
-            Team selectedTeam = student.teams.get(selectedTeamIndex, Team.class);
-
-            //Remove student from team
-            selectedTeam.remove(student);
-            student.teams.remove(student.teams.find(selectedTeam));
-
-            teamsCombo.removeAllItems();
-
-            //Add teams
-            loadTeams();
-        }
-    }
-
-    public void loadTeams(){
-        teamsCombo.removeAllItems();
-        for (int i = 0; i < student.teams.getLenght(); i++) {
-            teamsCombo.addItem("Team " + student.teams.get(i, Team.class).teamId);
-        }
-    }
-
     public static void main(String[] args) {
         Student[] students = new Student[10];
         java.util.Random random = new java.util.Random();
-        for(int i = 0; i < 10; i++){
+        for (int i = 0; i < 10; i++) {
             students[i] = new Student(random.nextInt(1900000, 2399999), random.nextDouble(4), "John" + i, "Student", new Date(random.nextInt(2000, 2009)), "Computer Science", "Turkish", "123456");
         }
-        for(Student student : students){
-            for(int i = 0; i < 12; i++) {
+        for (Student student : students) {
+            for (int i = 0; i < 12; i++) {
                 Student rand = students[random.nextInt(10)];
                 if (rand != student) {
                     int ti = random.nextInt(3);
@@ -123,7 +82,7 @@ public class TeamsPanel extends JPanel implements ActionListener {
             }
         }
 
-    JFrame frame = new JFrame("Teams Panel John 0");
+        JFrame frame = new JFrame("Teams Panel John 0");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 200);
 
@@ -137,6 +96,55 @@ public class TeamsPanel extends JPanel implements ActionListener {
         TeamsPanel teamsPanel2 = new TeamsPanel(students[1]);
         frame2.add(teamsPanel2);
         frame2.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == teamsCombo && teamsCombo.getSelectedIndex() != -1) {
+            teammateList.clear();
+
+            if (student.teams.getLenght() > 0) {
+                Team selectedTeam = student.teams.get(teamsCombo.getSelectedIndex(), Team.class);
+
+                //Add teammates
+                for (int i = 0; i < selectedTeam.getLenght(); i++) {
+                    teammateList.add(new TeammateListItem(selectedTeam.get(i)));
+//                    System.out.println(selectedTeam.get(i));
+                }
+
+                teammateList.revalidate();
+            }else {
+                teammateList.clear();
+                teammateList.revalidate();
+            }
+
+        } else if (e.getSource() == leaveTeam) {
+            if (teamsCombo.getSelectedIndex() == -1) {
+                return;
+            }
+            Team selectedTeam = student.teams.get(teamsCombo.getSelectedIndex(), Team.class);
+
+            //Remove student from team
+            selectedTeam.remove(student);
+            student.teams.remove(student.teams.find(selectedTeam));
+
+            teamsCombo.removeAllItems();
+
+            //Add teams
+            loadTeams();
+
+            if(student.teams.getLenght() == 0){
+                teammateList.clear();
+                teammateList.revalidate();
+            }
+        }
+    }
+
+    public void loadTeams() {
+        teamsCombo.removeAllItems();
+        for (int i = 0; i < student.teams.getLenght(); i++) {
+            teamsCombo.addItem("Team " + student.teams.get(i, Team.class).teamId);
+        }
     }
 
 }
