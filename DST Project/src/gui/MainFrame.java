@@ -34,7 +34,6 @@ public class MainFrame extends JFrame {
 
         LoginScreen loginScreen = new LoginScreen(this);
         add(loginScreen);
-        pack();
 
         //Add listeners
         addWindowListener(new WindowAdapter() {
