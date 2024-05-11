@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Tree<Student extends hasID> implements Serializable {
-    private Node root;
+    private Node<Student> root;
 
     public static Tree fromFile(String fileName) throws IOException, ClassNotFoundException {
         ObjectInputStream stream = new ObjectInputStream(new FileInputStream("data/" + fileName));
@@ -22,7 +22,7 @@ public class Tree<Student extends hasID> implements Serializable {
     }
 
     // Thanks to GeeksForGeeks for the rotation methods
-    private Node add(Node pointer, Node parent, Node newNode) {
+    private Node<Student> add(Node<Student> pointer, Node<Student> parent, Node<Student> newNode) {
         if (pointer == null) {
             newNode.setParent(parent);
             return newNode;
@@ -48,15 +48,15 @@ public class Tree<Student extends hasID> implements Serializable {
         return pointer;
     }
 
-    public int getHeight(Node node) {
+    public int getHeight(Node<Student> node) {
         if (node == null)
             return 0;
         return node.getHeight();
     }
 
-    Node rightRotate(Node y) {
-        Node x = y.getLeft();
-        Node T2 = x.getRight();
+    Node<Student> rightRotate(Node<Student> y) {
+        Node<Student> x = y.getLeft();
+        Node<Student> T2 = x.getRight();
 
         // Perform rotation
         x.setRight(y);
@@ -75,9 +75,9 @@ public class Tree<Student extends hasID> implements Serializable {
 
     // A utility function to left rotate subtree rooted with x
     // See the diagram given above.
-    Node leftRotate(Node x) {
-        Node y = x.getRight();
-        Node T2 = y.getLeft();
+    Node<Student> leftRotate(Node<Student> x) {
+        Node<Student> y = x.getRight();
+        Node<Student> T2 = y.getLeft();
 
         // Perform rotation
         y.setLeft(x);
@@ -94,7 +94,7 @@ public class Tree<Student extends hasID> implements Serializable {
         return y;
     }
 
-    int getBalance(Node N) {
+    int getBalance(Node<Student> N) {
         if (N == null)
             return 0;
 
@@ -102,25 +102,25 @@ public class Tree<Student extends hasID> implements Serializable {
     }
 
     public boolean remove(int id) {
-        Node node = findNode(id);
+        Node<Student> node = findNode(id);
         if (node == null)
             return false;
         root = delete(root, node);
         return true;
     }
 
-    private Node delete(Node pointer, Node node) {
+    private Node<Student> delete(Node<Student> pointer, Node<Student> node) {
         if (node == null)
             return null;
         if (node.compareTo(pointer) < 0) {
-            Node left = delete(pointer.getLeft(), node);
+            Node<Student> left = delete(pointer.getLeft(), node);
             pointer.setLeft(left);
 
         } else if (node.compareTo(pointer) > 0) {
             pointer.setRight(delete(pointer.getRight(), node));
         } else {
             if (pointer.getLeft() == null || pointer.getRight() == null) {
-                Node temp = null;
+                Node<Student> temp = null;
                 if (pointer.getLeft() == null)
                     temp = pointer.getRight();
                 else
@@ -134,7 +134,7 @@ public class Tree<Student extends hasID> implements Serializable {
                 } else
                     pointer = temp;
             } else {
-                Node temp = minValueNode(pointer.getRight());
+                Node<Student> temp = minValueNode(pointer.getRight());
                 pointer.setData(temp.getData());
                 pointer.setRight(delete(pointer.getRight(), temp));
             }
@@ -161,15 +161,15 @@ public class Tree<Student extends hasID> implements Serializable {
         return pointer;
     }
 
-    private Node minValueNode(Node node) {
-        Node current = node;
+    private Node<Student> minValueNode(Node<Student> node) {
+        Node<Student> current = node;
         while (current.getLeft() != null)
             current = current.getLeft();
         return current;
     }
 
-    Node findNode(int data) {
-        Node pointer = root;
+    Node<Student> findNode(int data) {
+        Node<Student> pointer = root;
         while (pointer != null) {
             if (pointer.getData().getId() == data)
                 return pointer;

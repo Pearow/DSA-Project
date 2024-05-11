@@ -59,10 +59,6 @@ public class Team extends LinkedList implements Serializable {
         return this.teamId;
     }
 
-    public int getStudentCount() {
-        return this.getLenght();
-    }
-
     public void add(Student student) {
         if (exists(student))
             return;

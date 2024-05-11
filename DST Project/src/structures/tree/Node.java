@@ -5,15 +5,15 @@ import src.structures.hasID;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Node<Student extends hasID> implements Serializable, Comparable<Node> {
+public class Node<Student extends hasID> implements Serializable, Comparable<Node<Student>> {
     private Student data;
-    private Node left;
-    private Node right;
-    private Node parent;
+    private Node<Student> left;
+    private Node<Student> right;
+    private Node<Student> parent;
     private int height;
     private int id;
 
-    public Node(Node parent, Student data) {
+    public Node(Node<Student> parent, Student data) {
         this.data = data;
         this.parent = parent;
         this.left = null;
@@ -38,27 +38,27 @@ public class Node<Student extends hasID> implements Serializable, Comparable<Nod
         this.id = data.getId();
     }
 
-    public Node getLeft() {
+    public Node<Student> getLeft() {
         return left;
     }
 
-    public void setLeft(Node left) {
+    public void setLeft(Node<Student> left) {
         this.left = left;
     }
 
-    public Node getRight() {
+    public Node<Student> getRight() {
         return right;
     }
 
-    public void setRight(Node right) {
+    public void setRight(Node<Student> right) {
         this.right = right;
     }
 
-    public Node getParent() {
+    public Node<Student> getParent() {
         return parent;
     }
 
-    public void setParent(Node parent) {
+    public void setParent(Node<Student> parent) {
         this.parent = parent;
     }
 
