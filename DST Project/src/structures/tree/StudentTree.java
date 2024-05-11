@@ -24,7 +24,7 @@ public class StudentTree extends Tree<Student> {
         {
             Student[] students = {
                     new Student(2200870, 3.3, "Kerem", "Serter", new Date(2000, 3, 21), "Software Engineering", "Turkish", "2200870"),
-                    new Student(2200900, 3.4, "Salim", "Uçar", new Date(2003, 5, 26), "Software Engineering", "Turkish", "2200870"),
+                    new Student(2200900, 3.4, "Salim", "Uçar", new Date(2003, 5, 26), "Software Engineering", "Turkish", "2200900"),
                     new Student(2200780, 3.0, "Azizcan", "Tam", new Date(2003, 0, 1), "Software Engineering", "Turkish", "2200780"),
                     new Student(4, 2.2, "Büşra", "Saygılı", new Date(2001, 2, 12), "Industrial Engineering", "Turkish", ""),
                     new Student(5, 2.6, "Hamit", "Hamdioğlu", new Date(2002, 11, 8), "Machine Engineering", "Turkish", "password"),
@@ -36,7 +36,7 @@ public class StudentTree extends Tree<Student> {
                     new Student(11, 2.1, "Muhammed", "Saleh", new Date(2002, 8, 11), "Civil Engineering", "Palestinian", "password"),
                     new Student(12, 3.7, "Fatima", "Salama", new Date(2003, 7, 17), "Civil Engineering", "Palestinian", "password"),
                     new Student(13, 3.9, "Harvey", "Specter", new Date(2001, 11, 29), "Electrical Engineering", "English", "password"),
-                    new Student(14, 3.2, "Elizabeth", "Brown", new Date(2004, 3, 14), "Industrial Engineering", "English", "password"),
+                    new Student(14, 3.2, "Pam", "Beesly", new Date(2004, 3, 14), "Industrial Engineering", "English", "password"),
                     new Student(15, 2.3, "Michael", "Scott", new Date(2002, 2, 30), "Electrical Engineering", "English", "password"),
                     new Student(16, 1.7, "Thomas", "Shelby", new Date(2001, 2, 24), "Computer Engineering", "English", "password"),
                     new Student(17, 4.0, "Tony", "Stark", new Date(2000, 6, 1), "Machine Engineering", "American", "password"),
